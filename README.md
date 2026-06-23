@@ -58,6 +58,48 @@ npm run smoke:deepask -- http://127.0.0.1:3100/deepask
 
 More deployment detail is in `deploy/README.md`.
 
+## Deploy on Railway
+
+Use the GitHub repo as the Railway source:
+
+```text
+https://github.com/DennisHedegreen/deepask-live
+```
+
+Set these Railway variables:
+
+```env
+NEXT_PUBLIC_BASE_PATH=/deepask
+ORGANIZER_CODE=replace-with-a-real-long-code
+LLM_PROVIDER=openai
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4.1-mini
+```
+
+Build command:
+
+```bash
+npm run build:deepask
+```
+
+Start command:
+
+```bash
+npm run start:deepask
+```
+
+Mount a Railway volume at:
+
+```text
+/app/data
+```
+
+The public Railway URL will use `/deepask`, for example:
+
+```text
+https://your-railway-domain.up.railway.app/deepask
+```
+
 ## Project docs
 
 - `docs/ENGINE.md` explains the survey engine, data model, API routes, Mind Hive rules, and abuse controls.

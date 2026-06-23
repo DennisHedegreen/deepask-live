@@ -7,7 +7,7 @@
     "build": "next build",
     "preflight:live": "node scripts/preflight-live.mjs",
     "build:deepask": "npm run preflight:live && next build",
-    "start:deepask": "npm run preflight:live && next start -p 3100",
+    "start:deepask": "npm run preflight:live && next start -p ${PORT:-3100}",
     "smoke:deepask": "node scripts/smoke-live.mjs",
     "package:deepask": "node scripts/package-live.mjs",
     "start": "next start",
