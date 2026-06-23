@@ -1,0 +1,9 @@
+.next
+node_modules
+.env
+.env.local
+data/responses.json
+data/mind-hive-reactions.json
+data/surveys.json
+dist-deploy/
+npm-debug.log*

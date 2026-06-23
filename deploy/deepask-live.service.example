@@ -1,0 +1,19 @@
+[Unit]
+Description=DeepAsk Live Next.js app
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/deepask
+Environment=NODE_ENV=production
+Environment=NEXT_PUBLIC_BASE_PATH=/deepask
+Environment=ORGANIZER_CODE=replace-with-real-code
+Environment=LLM_PROVIDER=openai
+Environment=OPENAI_API_KEY=replace-with-real-key
+Environment=OPENAI_MODEL=gpt-4.1-mini
+ExecStart=/usr/bin/npm run start:deepask
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
