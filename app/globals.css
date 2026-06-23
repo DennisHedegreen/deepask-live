@@ -362,6 +362,64 @@ select:focus {
   font-size: 0.9rem;
 }
 
+.role-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.role-chip {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 9px;
+  background: var(--panel-muted);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.role-chip.ai {
+  border-color: rgba(37, 92, 111, 0.36);
+  background: #edf4f5;
+  color: var(--accent-strong);
+}
+
+.role-chip.participant {
+  border-color: rgba(194, 147, 61, 0.4);
+  background: #fff7e8;
+  color: #6d4a15;
+}
+
+.role-chip.organiser {
+  border-color: rgba(35, 97, 69, 0.28);
+  background: #eaf5ef;
+  color: var(--ok);
+}
+
+.turn-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.turn-item {
+  display: grid;
+  gap: 6px;
+  border-left: 3px solid var(--line);
+  padding-left: 12px;
+}
+
+.turn-item p {
+  margin: 0;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
 .workspace-tabs {
   position: sticky;
   top: 0;
@@ -524,6 +582,8 @@ select:focus {
 }
 
 .raw {
+  display: grid;
+  gap: 7px;
   border-left: 3px solid var(--line);
   padding-left: 12px;
   color: var(--muted);

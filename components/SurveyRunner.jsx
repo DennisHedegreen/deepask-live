@@ -57,6 +57,20 @@ function hasAnsweredRequiredFollowup(question) {
   );
 }
 
+function turnLabel(turn) {
+  if (turn.role === "ai") return "AI follow-up";
+  if (turn.type === "followup_answer") return "Participant follow-up answer";
+  return "Participant feedback";
+}
+
+function promptSourceLabel(hasAiTurn) {
+  return hasAiTurn ? "AI follow-up question" : "Organiser question";
+}
+
+function responseTargetLabel(hasAiTurn) {
+  return hasAiTurn ? "Your follow-up answer" : "Your feedback";
+}
+
 function reactionTotal(reactions) {
   return Object.values(reactions || {}).reduce(
     (total, count) => total + Number(count || 0),
@@ -155,6 +169,18 @@ function ConversationPreview({ questions }) {
             {question.followup_count === 1 ? "" : "s"}
           </dt>
           <dd>{question.question}</dd>
+          {(question.turns || []).length ? (
+            <div className="turn-list">
+              {(question.turns || []).map((turn, index) => (
+                <div className="turn-item" key={`${question.question_id}-turn-${index}`}>
+                  <span className={`role-chip ${turn.role === "ai" ? "ai" : "participant"}`}>
+                    {turnLabel(turn)}
+                  </span>
+                  <p>{turn.text}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       ))}
     </section>
@@ -490,7 +516,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
   const isHiveReview = phase === "groupReview";
   const gridClassName = isSimpleMode ? "survey-simple-grid" : "grid";
   const answerButtonText = currentAiTurn ? "Send answer" : "Continue";
-  const questionLabel = currentAiTurn ? "Follow-up" : `Question ${questionIndex + 1}`;
+  const questionLabel = currentAiTurn ? "AI follow-up" : `Question ${questionIndex + 1}`;
 
   return (
     <main className="page">
@@ -551,8 +577,20 @@ export default function SurveyRunner({ survey: surveyInput }) {
                     ? questionLabel
                     : `${currentQuestion.question_id}${currentAiTurn ? " · Follow-up question" : " · Main question"}`}
                 </p>
+                <div className="role-strip" aria-label="Prompt and response source">
+                  <span className={`role-chip ${currentAiTurn ? "ai" : "organiser"}`}>
+                    Showing: {promptSourceLabel(Boolean(currentAiTurn))}
+                  </span>
+                  <span className="role-chip participant">
+                    Writing: {responseTargetLabel(Boolean(currentAiTurn))}
+                  </span>
+                </div>
                 <p className="question">{promptText}</p>
+                <label htmlFor="participant-answer">
+                  <strong>{responseTargetLabel(Boolean(currentAiTurn))}</strong>
+                </label>
                 <textarea
+                  id="participant-answer"
                   aria-label="Participant answer"
                   value={answerDraft}
                   onChange={(event) => setAnswerDraft(event.target.value)}

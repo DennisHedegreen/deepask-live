@@ -33,6 +33,12 @@ function totalFollowups(response) {
   );
 }
 
+function turnLabel(turn) {
+  if (turn.role === "ai") return "AI follow-up";
+  if (turn.type === "followup_answer") return "Participant follow-up answer";
+  return "Participant feedback";
+}
+
 function answeredQuestionCount(response) {
   return questionsOf(response).filter((question) =>
     (question.turns || []).some((turn) => turn.role === "participant")
@@ -119,7 +125,10 @@ function ResponseCard({ response }) {
                 <div className="stack" style={{ marginTop: 10 }}>
                   {(question.turns || []).map((turn, index) => (
                     <p className="raw" key={`${question.question_id}-${index}`}>
-                      {turn.role === "ai" ? "AI follow-up" : "Participant"}: {turn.text}
+                      <span className={`role-chip ${turn.role === "ai" ? "ai" : "participant"}`}>
+                        {turnLabel(turn)}
+                      </span>
+                      <span>{turn.text}</span>
                     </p>
                   ))}
                 </div>
