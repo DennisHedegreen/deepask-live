@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AIActCard from "@/components/AIActCard";
 import { getSurvey } from "@/lib/storage";
 
 export default async function ParticipantAboutPage({ params }) {
@@ -89,6 +90,10 @@ export default async function ParticipantAboutPage({ params }) {
               Start survey
             </Link>
           </div>
+        </section>
+
+        <section style={{ marginTop: 18 }}>
+          <AIActCard />
         </section>
       </div>
     </main>

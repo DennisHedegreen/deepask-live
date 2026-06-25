@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AIActCard from "@/components/AIActCard";
 import { getSurveys } from "@/lib/storage";
 
 export default async function Home() {
@@ -53,6 +54,10 @@ export default async function Home() {
             </p>
             <span className="portal-action">Open organiser workspace</span>
           </Link>
+        </section>
+
+        <section style={{ marginTop: 18 }}>
+          <AIActCard compact />
         </section>
       </div>
     </main>

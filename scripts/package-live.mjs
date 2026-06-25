@@ -18,6 +18,7 @@ const include = [
   "components",
   "data/.gitkeep",
   "data/surveys.json",
+  "public",
   "deploy",
   "docs",
   "lib",

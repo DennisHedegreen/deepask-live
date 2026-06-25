@@ -39,6 +39,13 @@ function turnLabel(turn) {
   return "Participant feedback";
 }
 
+function turnTypeLabel(turn) {
+  if (turn.type === "initial_answer") return "Initial answer";
+  if (turn.type === "followup") return "Follow-up question";
+  if (turn.type === "followup_answer") return "Follow-up answer";
+  return turn.type || "Turn";
+}
+
 function answeredQuestionCount(response) {
   return questionsOf(response).filter((question) =>
     (question.turns || []).some((turn) => turn.role === "participant")
@@ -62,6 +69,91 @@ function RankedList({ counts, empty = "No signals yet." }) {
       ))}
     </ol>
   );
+}
+
+function csvEscape(value) {
+  const text = String(value ?? "");
+  return `"${text.replaceAll('"', '""')}"`;
+}
+
+function responseRows(response) {
+  const summary = summaryOf(response);
+  const base = {
+    response_id: response.response_id,
+    survey_id: response.survey_id,
+    created_at: response.created_at,
+    synthetic_persona: response.synthetic_persona || "",
+    synthetic_batch_id: response.synthetic_batch_id || "",
+    main_theme: summary.main_theme || "",
+    barrier_or_need: summary.barrier_or_need || "",
+    suggested_improvement: summary.suggested_improvement || "",
+    neutral_summary: summary.neutral_summary || response.final_summary || "",
+    model_provider: response.model_provider || summary.model_provider || "",
+    model_name: response.model_name || summary.model_name || "",
+    prompt_version: response.prompt_version || ""
+  };
+
+  const rows = [];
+  questionsOf(response).forEach((question) => {
+    (question.turns || []).forEach((turn, index) => {
+      rows.push({
+        ...base,
+        question_id: question.question_id,
+        question: question.question,
+        turn_index: index + 1,
+        turn_role: turn.role,
+        turn_type: turn.type,
+        turn_label: turnLabel(turn),
+        turn_theme: turn.theme || "",
+        turn_created_at: turn.created_at || "",
+        turn_text: turn.text || ""
+      });
+    });
+  });
+  return rows.length ? rows : [base];
+}
+
+function responsesToCsv(responses) {
+  const rows = responses.flatMap(responseRows);
+  const headers = [
+    "response_id",
+    "survey_id",
+    "created_at",
+    "synthetic_persona",
+    "synthetic_batch_id",
+    "main_theme",
+    "barrier_or_need",
+    "suggested_improvement",
+    "neutral_summary",
+    "model_provider",
+    "model_name",
+    "prompt_version",
+    "question_id",
+    "question",
+    "turn_index",
+    "turn_role",
+    "turn_type",
+    "turn_label",
+    "turn_theme",
+    "turn_created_at",
+    "turn_text"
+  ];
+  return [
+    headers.join(","),
+    ...rows.map((row) => headers.map((header) => csvEscape(row[header])).join(","))
+  ].join("\n");
+}
+
+function downloadText(filename, mimeType, text) {
+  const blob = new Blob([text], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 }
 
 function MetricCard({ label, value }) {
@@ -88,10 +180,18 @@ function TabButton({ active, children, onClick }) {
 function ResponseCard({ response }) {
   const [showRaw, setShowRaw] = useState(false);
   const summary = summaryOf(response);
+  const questionSummaries = Array.isArray(summary.question_summaries)
+    ? summary.question_summaries
+    : [];
   return (
     <article className="response-card stack">
       <div className="response-head">
-        <strong>{response.response_id}</strong>
+        <div>
+          <strong>{response.response_id}</strong>
+          {response.synthetic_persona ? (
+            <span className="response-persona">{response.synthetic_persona}</span>
+          ) : null}
+        </div>
         <span>{response.created_at ? new Date(response.created_at).toLocaleString() : ""}</span>
       </div>
       <dl className="field-list">
@@ -113,28 +213,102 @@ function ResponseCard({ response }) {
         </div>
       </dl>
       <button className="button secondary" type="button" onClick={() => setShowRaw(!showRaw)}>
-        {showRaw ? "Hide audit record" : "Show audit record"}
+        {showRaw ? "Hide full researcher record" : "Show full researcher record"}
       </button>
       {showRaw ? (
-        <div className="stack">
+        <div className="research-record stack">
+          <section className="research-section">
+            <div className="section-head compact">
+              <div>
+                <p className="eyebrow">Research metadata</p>
+                <h3>Response data</h3>
+              </div>
+            </div>
+            <dl className="field-list research-fields">
+              <div className="field">
+                <dt>Response ID</dt>
+                <dd>{response.response_id}</dd>
+              </div>
+              <div className="field">
+                <dt>Created</dt>
+                <dd>{response.created_at || "Unknown"}</dd>
+              </div>
+              <div className="field">
+                <dt>Persona</dt>
+                <dd>{response.synthetic_persona || "Manual / real participant"}</dd>
+              </div>
+              <div className="field">
+                <dt>Batch</dt>
+                <dd>{response.synthetic_batch_id || "Not synthetic-batch marked"}</dd>
+              </div>
+              <div className="field">
+                <dt>Barrier / need</dt>
+                <dd>{summary.barrier_or_need || "None recorded"}</dd>
+              </div>
+              <div className="field">
+                <dt>Suggested improvement</dt>
+                <dd>{summary.suggested_improvement || "None recorded"}</dd>
+              </div>
+              <div className="field">
+                <dt>Final summary</dt>
+                <dd>{response.final_summary || summary.neutral_summary || "None recorded"}</dd>
+              </div>
+              <div className="field">
+                <dt>Model / prompt</dt>
+                <dd>
+                  {[response.model_provider || summary.model_provider, response.model_name || summary.model_name, response.prompt_version]
+                    .filter(Boolean)
+                    .join(" · ") || "Not recorded"}
+                </dd>
+              </div>
+            </dl>
+          </section>
+
+          <section className="research-section">
+            <p className="eyebrow">Full transcript</p>
           {questionsOf(response).map((question) => (
-            <div className="field" key={question.question_id}>
-              <dt>{question.question_id}</dt>
-              <dd>
+            <article className="question-audit" key={question.question_id}>
+              <div className="question-audit-head">
+                <span className="pill">{question.question_id}</span>
                 <strong>{question.question}</strong>
-                <div className="stack" style={{ marginTop: 10 }}>
+              </div>
+              <div className="turn-list">
                   {(question.turns || []).map((turn, index) => (
-                    <p className="raw" key={`${question.question_id}-${index}`}>
+                  <div className="turn-item research-turn" key={`${question.question_id}-${index}`}>
+                    <div className="turn-meta">
                       <span className={`role-chip ${turn.role === "ai" ? "ai" : "participant"}`}>
                         {turnLabel(turn)}
                       </span>
-                      <span>{turn.text}</span>
-                    </p>
+                      <span>{turnTypeLabel(turn)}</span>
+                      {turn.theme ? <span>{turn.theme}</span> : null}
+                      {turn.created_at ? <span>{new Date(turn.created_at).toLocaleString()}</span> : null}
+                    </div>
+                    <p>{turn.text}</p>
+                  </div>
                   ))}
-                </div>
-              </dd>
-            </div>
+              </div>
+            </article>
           ))}
+          </section>
+
+          {questionSummaries.length ? (
+            <section className="research-section">
+              <p className="eyebrow">Question summaries</p>
+              <div className="field-list">
+                {questionSummaries.map((item) => (
+                  <div className="field" key={item.question_id || item.theme}>
+                    <dt>{[item.question_id, item.theme].filter(Boolean).join(" · ")}</dt>
+                    <dd>{item.summary}</dd>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          <details>
+            <summary>Raw JSON</summary>
+            <pre className="raw-json">{JSON.stringify(response, null, 2)}</pre>
+          </details>
         </div>
       ) : null}
     </article>
@@ -700,10 +874,42 @@ export default function OrganizerPage() {
                   <p className="eyebrow">Operational review</p>
                   <h2>Response workpacks</h2>
                 </div>
-                <span className="pill">{responses.length} saved</span>
+                <div className="actions">
+                  <button
+                    className="button secondary"
+                    type="button"
+                    disabled={!responses.length}
+                    onClick={() =>
+                      downloadText(
+                        `${selectedSurveyId || "survey"}-responses.json`,
+                        "application/json",
+                        `${JSON.stringify(responses, null, 2)}\n`
+                      )
+                    }
+                  >
+                    Download JSON
+                  </button>
+                  <button
+                    className="button secondary"
+                    type="button"
+                    disabled={!responses.length}
+                    onClick={() =>
+                      downloadText(
+                        `${selectedSurveyId || "survey"}-responses.csv`,
+                        "text/csv",
+                        responsesToCsv(responses)
+                      )
+                    }
+                  >
+                    Download CSV
+                  </button>
+                  <span className="pill">{responses.length} saved</span>
+                </div>
               </div>
               <p className="note">
-                Audit is for organisers only. It is not the participant-facing result page.
+                Audit is for organisers and researchers only. It includes raw individual answers,
+                AI follow-up turns, summaries, metadata, and export files. It is not the
+                participant-facing result page.
               </p>
             </div>
             {responses.length ? (
