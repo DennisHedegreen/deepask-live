@@ -20,15 +20,16 @@ export async function POST(request) {
     const surveyId = String(body.survey_id || "hackathon-comet-2026").trim();
     const statementId = truncateText(body.statement_id, 120);
     const reactionType = String(body.reaction_type || "").trim();
+    const participantToken = String(body.participant_token || "").trim();
 
-    if (!statementId || !REACTION_TYPES.includes(reactionType)) {
+    if (!statementId || !REACTION_TYPES.includes(reactionType) || !participantToken) {
       return Response.json(
-        { error: "statement_id and valid reaction_type are required" },
+        { error: "statement_id, participant_token, and valid reaction_type are required" },
         { status: 400 }
       );
     }
 
-    await saveMindHiveReaction(surveyId, statementId, reactionType);
+    await saveMindHiveReaction(surveyId, statementId, reactionType, participantToken);
     const responses = (await getResponsesForSurvey(surveyId)).filter(responseHasRequiredFollowups);
     const allReactions = await getMindHiveReactions();
     const reactions = reactionsForSurvey(allReactions, surveyId);

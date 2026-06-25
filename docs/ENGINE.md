@@ -127,11 +127,11 @@ The browser stores local reaction state to discourage repeat reactions from the 
 Public participant routes:
 
 - `GET /api/surveys/[surveyId]`: load public survey configuration.
-- `POST /api/follow-up`: generate a neutral follow-up.
+- `POST /api/followup`: generate a neutral follow-up.
 - `POST /api/summary`: generate a participant summary.
 - `POST /api/responses`: submit a response workpack.
-- `GET /api/mind-hive/[surveyId]`: load public group patterns.
-- `POST /api/mind-hive/[surveyId]/react`: add a statement reaction.
+- `GET /api/mind-hive?survey_id=[surveyId]`: load public group patterns.
+- `POST /api/mind-hive/reactions`: add a statement reaction.
 - `GET /api/health`: deployment health check.
 
 Organiser-protected routes:

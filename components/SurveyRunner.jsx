@@ -7,6 +7,7 @@ import { apiPath } from "@/lib/paths";
 
 const SURVEY_COMPLETED_PREFIX = "deepask-survey-completed-v1";
 const HIVE_REACTIONS_PREFIX = "deepask-mind-hive-reactions-v1";
+const REACTION_TOKEN_PREFIX = "deepask-reaction-token-v1";
 
 const REACTION_LABELS = {
   agree: "Agree",
@@ -94,6 +95,16 @@ function saveLocalHiveReactions(surveyId, reactions) {
     `${HIVE_REACTIONS_PREFIX}:${surveyId}`,
     JSON.stringify(reactions)
   );
+}
+
+function loadReactionToken(surveyId) {
+  if (typeof window === "undefined") return "";
+  return window.localStorage.getItem(`${REACTION_TOKEN_PREFIX}:${surveyId}`) || "";
+}
+
+function saveReactionToken(surveyId, token) {
+  if (!token) return;
+  window.localStorage.setItem(`${REACTION_TOKEN_PREFIX}:${surveyId}`, token);
 }
 
 function StepIndicator({ activeStep, questionIndex, questions }) {
@@ -430,6 +441,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
       };
       const data = await postJson(apiPath("/api/responses"), payload);
       window.localStorage.setItem(surveyCompletedKey, "true");
+      saveReactionToken(surveyId, data.workpack?.reaction_token);
       setSavedWorkpack(data.workpack);
       setPhase("saved");
       await loadHiveReview();
@@ -485,7 +497,8 @@ export default function SurveyRunner({ survey: surveyInput }) {
         body: JSON.stringify({
           survey_id: surveyId,
           statement_id: statementId,
-          reaction_type: reactionType
+          reaction_type: reactionType,
+          participant_token: savedWorkpack?.reaction_token || loadReactionToken(surveyId)
         })
       });
       const data = await response.json();

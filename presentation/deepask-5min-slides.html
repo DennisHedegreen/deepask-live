@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DeepAsk Live - 5 minute presentation</title>
+  <style>
+    :root {
+      --ink: #20252d;
+      --muted: #657386;
+      --cream: #fbf8f1;
+      --panel: #fffdf8;
+      --line: #ded6c8;
+      --mint: #dcefe6;
+      --strawberry: #f6b5c6;
+      --gold: #e7b85b;
+      --blue: #235d72;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .deck {
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .deck::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(440px, 1.1fr);
+      gap: 34px;
+      min-height: 100vh;
+      padding: 48px 58px;
+      scroll-snap-align: start;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(220, 239, 230, 0.76), rgba(255, 253, 248, 0.9) 42%, rgba(246, 181, 198, 0.34));
+    }
+
+    .slide:nth-child(even) {
+      background:
+        linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(231, 184, 91, 0.22) 52%, rgba(220, 239, 230, 0.72));
+    }
+
+    .slide.full {
+      grid-template-columns: 1fr;
+      align-content: center;
+      text-align: center;
+    }
+
+    .copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 640px;
+    }
+
+    .visual {
+      display: grid;
+      align-content: center;
+      gap: 12px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: 0.84rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      max-width: 980px;
+      font-weight: 950;
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(4.4rem, 8vw, 7.8rem);
+    }
+
+    h2 {
+      font-size: clamp(3rem, 5vw, 5.2rem);
+    }
+
+    p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1.35rem;
+      line-height: 1.42;
+    }
+
+    ul {
+      display: grid;
+      gap: 14px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      border: 1px solid rgba(35, 93, 114, 0.16);
+      border-radius: 8px;
+      padding: 13px 15px;
+      background: rgba(255, 253, 248, 0.78);
+      color: var(--ink);
+      font-size: 1.12rem;
+      line-height: 1.35;
+      box-shadow: 0 14px 36px rgba(37, 43, 51, 0.08);
+    }
+
+    .shot {
+      width: 100%;
+      max-height: 74vh;
+      object-fit: cover;
+      object-position: top center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 26px 70px rgba(33, 38, 45, 0.17);
+    }
+
+    .shot.tall {
+      max-height: 76vh;
+      object-fit: cover;
+    }
+
+    .caption {
+      margin: 0;
+      color: #7b6140;
+      font-size: 0.98rem;
+      font-weight: 750;
+    }
+
+    .timer {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 20px;
+      border: 1px solid rgba(35, 93, 114, 0.18);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255, 253, 248, 0.72);
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .flavour-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .scoop {
+      border: 1px solid rgba(37, 43, 51, 0.12);
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: var(--panel);
+      font-weight: 900;
+      box-shadow: 0 10px 28px rgba(37, 43, 51, 0.09);
+    }
+
+    .scoop:nth-child(2) {
+      background: var(--mint);
+    }
+
+    .scoop:nth-child(3) {
+      background: #ffe1eb;
+    }
+
+    .scoop:nth-child(4) {
+      background: #fff1ca;
+    }
+
+    .bigline {
+      color: var(--ink);
+      font-size: 1.7rem;
+      font-weight: 850;
+    }
+
+    @media print {
+      .deck {
+        height: auto;
+        overflow: visible;
+      }
+
+      .slide {
+        page-break-after: always;
+        min-height: 100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide full">
+      <div>
+        <p class="timer">0:00-0:30</p>
+        <p class="eyebrow">DeepAsk Live</p>
+        <h1>The survey that asks back</h1>
+        <p class="bigline">A civic listening tool disguised as an ice cream tasting.</p>
+        <div class="flavour-row" aria-label="Presentation flavours">
+          <span class="scoop">answer</span>
+          <span class="scoop">follow-up</span>
+          <span class="scoop">summary</span>
+          <span class="scoop">Mind Hive</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="copy">
+        <p class="timer">0:30-1:10</p>
+        <p class="eyebrow">The problem</p>
+        <h2>Most surveys taste flat</h2>
+        <p>They collect ratings, boxes, and free text. Then the interesting meaning disappears into a spreadsheet.</p>
+        <ul>
+          <li>People answer in their own words.</li>
+          <li>The system asks one neutral follow-up.</li>
+          <li>The participant confirms the summary before it counts.</li>
+        </ul>
+      </div>
+      <div class="visual">
+        <img class="shot" src="screenshots/01-home.png" alt="DeepAsk Live home page screenshot">
+        <p class="caption">Start with a normal-looking survey. Then make it deeper.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="copy">
+        <p class="timer">1:10-1:55</p>
+        <p class="eyebrow">Participant flow</p>
+        <h2>One question, then one better question</h2>
+        <p>The participant is not forced into a category first. They write naturally, and DeepAsk asks for the missing detail.</p>
+        <ul>
+          <li>No persuasion. No scoring. No judgement.</li>
+          <li>The AI only clarifies meaning, barriers, needs, and suggestions.</li>
+          <li>The ice cream theme keeps the demo light enough to understand fast.</li>
+        </ul>
+      </div>
+      <div class="visual">
+        <img class="shot" src="screenshots/02-survey.png" alt="Ice Cream Survey participant page screenshot">
+        <p class="caption">The fun wrapper makes the mechanism easy to explain.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="copy">
+        <p class="timer">1:55-2:45</p>
+        <p class="eyebrow">The governance layer</p>
+        <h2>Original voice stays separate</h2>
+        <p>The important part is not just the UI. It is the workpack behind every answer.</p>
+        <ul>
+          <li>Raw participant text is stored separately from AI interpretation.</li>
+          <li>The summary is shown back to the participant.</li>
+          <li>The organiser can audit what happened without exposing raw answers publicly.</li>
+        </ul>
+      </div>
+      <div class="visual">
+        <img class="shot tall" src="screenshots/05-organizer-unlocked.png" alt="Unlocked organiser workspace screenshot">
+        <p class="caption">The organiser side is where the audit trail lives.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="copy">
+        <p class="timer">2:45-3:40</p>
+        <p class="eyebrow">Mind Hive</p>
+        <h2>From answers to group signals</h2>
+        <p>DeepAsk does not publish individual result pages. It turns completed workpacks into collective patterns.</p>
+        <ul>
+          <li>Agreements, tensions, minority concerns, and next questions.</li>
+          <li>People react to group statements, not to other people.</li>
+          <li>The goal is not a final verdict. It is a better next conversation.</li>
+        </ul>
+      </div>
+      <div class="visual">
+        <img class="shot" src="screenshots/06-hackathon-mind-hive.png" alt="Mind Hive screenshot">
+        <p class="caption">The group layer opens only when there is enough signal.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="copy">
+        <p class="timer">3:40-4:35</p>
+        <p class="eyebrow">Operator surface</p>
+        <h2>A small tool, not a magic box</h2>
+        <p>The organiser can create surveys, review summaries, export data, and inspect the researcher record.</p>
+        <ul>
+          <li>Survey builder for the question flow.</li>
+          <li>Results and audit tabs for the operational record.</li>
+          <li>JSON and CSV export when the data needs to leave the demo.</li>
+        </ul>
+      </div>
+      <div class="visual">
+        <img class="shot" src="screenshots/04-organizer.png" alt="Organiser locked workspace screenshot">
+        <p class="caption">Public participants outside. Protected operator controls inside.</p>
+      </div>
+    </section>
+
+    <section class="slide full">
+      <div>
+        <p class="timer">4:35-5:00</p>
+        <p class="eyebrow">Closing</p>
+        <h1>Better listening, one scoop deeper</h1>
+        <p class="bigline">DeepAsk is not trying to replace human judgement. It helps people say what they mean, and helps organisers see what the group is really saying.</p>
+        <div class="flavour-row" aria-label="Final points">
+          <span class="scoop">neutral AI</span>
+          <span class="scoop">confirmed summaries</span>
+          <span class="scoop">auditable data</span>
+          <span class="scoop">collective signal</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

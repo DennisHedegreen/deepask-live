@@ -14,6 +14,7 @@ const REACTION_LABELS = {
 
 const STORAGE_KEY = "deepask-mind-hive-reactions-v1";
 const SURVEY_COMPLETED_PREFIX = "deepask-survey-completed-v1";
+const REACTION_TOKEN_PREFIX = "deepask-reaction-token-v1";
 
 function loadLocalReactions(surveyId) {
   if (typeof window === "undefined") return {};
@@ -33,8 +34,56 @@ function hasCompletedSurvey(surveyId) {
   return window.localStorage.getItem(`${SURVEY_COMPLETED_PREFIX}:${surveyId}`) === "true";
 }
 
+function loadReactionToken(surveyId) {
+  if (typeof window === "undefined") return "";
+  return window.localStorage.getItem(`${REACTION_TOKEN_PREFIX}:${surveyId}`) || "";
+}
+
+function canReactInBrowser(surveyId) {
+  return hasCompletedSurvey(surveyId) && Boolean(loadReactionToken(surveyId));
+}
+
 function reactionTotal(reactions) {
   return Object.values(reactions || {}).reduce((total, count) => total + Number(count || 0), 0);
+}
+
+function IceCreamProgress({ currentIndex, total }) {
+  const safeTotal = Math.max(1, total);
+  const maxIndex = Math.max(0, safeTotal - 1);
+  const clampedIndex = Math.min(currentIndex, maxIndex);
+  return (
+    <div
+      className="ice-cream-progress"
+      aria-label={`Ice cream progress: ${clampedIndex + 1} of ${safeTotal}`}
+    >
+      <div className="ice-cream-stage">
+        <span
+          aria-hidden="true"
+          className="ice-cream-sprite"
+          style={{
+            backgroundImage: `url("${apiPath("/assets/ice-cream-progress.png")}")`,
+            "--ice-frame": clampedIndex,
+            "--ice-position": `${maxIndex ? (clampedIndex / maxIndex) * 100 : 0}%`
+          }}
+        />
+        <div className="ice-cream-bites" aria-hidden="true">
+          {Array.from({ length: safeTotal }, (_, index) => (
+            <span
+              className={index <= clampedIndex ? "active" : ""}
+              key={index}
+            />
+          ))}
+        </div>
+      </div>
+      <span className="ice-cream-progress-label">
+        Bite {clampedIndex + 1} of {safeTotal}
+      </span>
+    </div>
+  );
+}
+
+function StatementProgress({ currentIndex, total }) {
+  return <IceCreamProgress currentIndex={currentIndex} total={total} />;
 }
 
 function StatementCard({ statement, localReactions, onReact, canReact }) {
@@ -66,7 +115,8 @@ function StatementCard({ statement, localReactions, onReact, canReact }) {
           const alreadyReacted = Boolean(statementLocal[type]);
           return (
             <button
-              className={`button ${alreadyReacted ? "" : "secondary"}`}
+              aria-pressed={alreadyReacted}
+              className={`button ${alreadyReacted ? "selected" : "secondary"}`}
               disabled={alreadyReacted || !canReact}
               key={type}
               type="button"
@@ -119,7 +169,7 @@ export default function MindHiveView({ survey }) {
 
   useEffect(() => {
     setLocalReactions(loadLocalReactions(surveyId));
-    setCanReact(hasCompletedSurvey(surveyId));
+    setCanReact(canReactInBrowser(surveyId));
     async function loadHive() {
       try {
         const response = await fetch(apiPath(`/api/mind-hive?survey_id=${encodeURIComponent(surveyId)}`), { cache: "no-store" });
@@ -164,7 +214,8 @@ export default function MindHiveView({ survey }) {
         body: JSON.stringify({
           survey_id: surveyId,
           statement_id: statementId,
-          reaction_type: reactionType
+          reaction_type: reactionType,
+          participant_token: loadReactionToken(surveyId)
         })
       });
       const data = await response.json();
@@ -289,6 +340,10 @@ export default function MindHiveView({ survey }) {
                 {sortedStatements.length}
               </p>
               <h2>Review one group pattern</h2>
+              <StatementProgress
+                currentIndex={currentIndex}
+                total={sortedStatements.length}
+              />
               <p className="note">
                 These are interpreted group patterns. They are not personal result
                 pages and they do not expose raw individual answers.

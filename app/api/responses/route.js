@@ -7,7 +7,6 @@ import {
 } from "@/lib/constants";
 import { demoResponses } from "@/lib/demoData";
 import {
-  generateResponseId,
   getResponses,
   getResponsesForSurvey,
   getSurvey,
@@ -43,7 +42,6 @@ export async function POST(request) {
     if (limited) return limited;
 
     const body = await readLimitedJson(request);
-    const responseId = await generateResponseId();
     const aiSummaryDraft = body.ai_summary_draft || {};
     const surveyId = String(body.survey_id || SURVEY_ID).trim();
     const survey = (await getSurvey(surveyId)) || {
@@ -64,7 +62,6 @@ export async function POST(request) {
     );
 
     const workpack = {
-      response_id: responseId,
       survey_id: survey.id,
       questionnaire: survey.questions || body.questionnaire || QUESTIONNAIRE,
       questions,
@@ -103,8 +100,8 @@ export async function POST(request) {
       );
     }
 
-    await saveResponse(workpack);
-    return Response.json({ workpack }, { status: 201 });
+    const savedWorkpack = await saveResponse(workpack);
+    return Response.json({ workpack: savedWorkpack }, { status: 201 });
   } catch (error) {
     return Response.json(
       { error: error.message || "Could not save response" },

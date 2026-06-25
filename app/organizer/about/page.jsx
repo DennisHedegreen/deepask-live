@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AIActCard from "@/components/AIActCard";
 
 export default function OrganizerAboutPage() {
   return (
@@ -78,6 +79,10 @@ export default function OrganizerAboutPage() {
               Open organiser workspace
             </Link>
           </div>
+        </section>
+
+        <section style={{ marginTop: 18 }}>
+          <AIActCard />
         </section>
       </div>
     </main>
