@@ -67,8 +67,8 @@ function StatementCard({ statement, localReactions, onReact, canReact, usingDemo
   const statementLocal = localReactions[statement.id] || {};
   return (
     <article className="response-card stack">
-      <div className="response-head">
-        <strong>{statement.title}</strong>
+      <div className="response-head hive-statement-head">
+        <strong className="hive-statement-title">{statement.title}</strong>
         <span>
           mentioned in {statement.responseCount} {usingDemo ? "responses in this demo map" : "submitted survey"}
           {!usingDemo && statement.responseCount !== 1 ? "s" : ""}
@@ -82,7 +82,7 @@ function StatementCard({ statement, localReactions, onReact, canReact, usingDemo
           {reactionTotal(statement.reactions) === 1 ? "" : "s"}
         </span>
       </div>
-      <p>{statement.summary}</p>
+      <p className="hive-statement-summary">{statement.summary}</p>
       <p className="note">
         One group pattern at a time. React if this statement deserves attention
         before moving to the next one.

@@ -594,6 +594,26 @@ select:focus {
   font-size: 0.9rem;
 }
 
+.hive-statement-title {
+  max-width: 68%;
+  color: var(--ink);
+  font-size: clamp(1.08rem, 1.8vw, 1.3rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.hive-statement-head {
+  align-items: flex-start;
+}
+
+.hive-statement-summary {
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-size: clamp(1.14rem, 1.8vw, 1.3rem);
+  font-weight: 650;
+  line-height: 1.5;
+}
+
 .response-persona {
   display: block;
   margin-top: 4px;
@@ -804,6 +824,14 @@ select:focus {
 
   .lede {
     font-size: 1rem;
+  }
+
+  .hive-statement-title {
+    max-width: none;
+  }
+
+  .hive-statement-head {
+    flex-direction: column;
   }
 
   .grid,
