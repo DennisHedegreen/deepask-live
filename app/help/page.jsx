@@ -16,8 +16,7 @@ export default async function HelpPage() {
             <span>Demo help</span>
           </div>
           <nav className="nav" aria-label="Primary">
-            <Link href={`/s/${survey.id}`}>Survey</Link>
-            <Link href={`/s/${survey.id}/mind-hive`}>Mind Hive</Link>
+            <Link href={`/s/${survey.id}`}>Take the survey</Link>
             <Link href="/">Home</Link>
           </nav>
         </header>
@@ -83,9 +82,6 @@ export default async function HelpPage() {
 
         <div className="actions" style={{ marginTop: 18 }}>
           <Link className="button" href={`/s/${survey.id}`}>Start the survey</Link>
-          <Link className="button secondary" href={`/s/${survey.id}/mind-hive`}>
-            View Mind Hive
-          </Link>
         </div>
       </div>
     </main>

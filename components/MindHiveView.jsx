@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { apiPath } from "@/lib/paths";
 
 const REACTION_LABELS = {
@@ -135,15 +136,26 @@ function CompactStatementList({ title, statements, emptyText }) {
 
 export default function MindHiveView({ survey }) {
   const surveyId = survey.id;
+  const router = useRouter();
   const [hive, setHive] = useState(null);
   const [usingDemo, setUsingDemo] = useState(false);
   const [localReactions, setLocalReactions] = useState({});
   const [canReact, setCanReact] = useState(false);
+  const [completionChecked, setCompletionChecked] = useState(false);
+  const [hasCompleted, setHasCompleted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
 
   useEffect(() => {
+    const completed = hasCompletedSurvey(surveyId);
+    setHasCompleted(completed);
+    setCompletionChecked(true);
+    if (!completed) {
+      router.replace(`/s/${surveyId}`);
+      return;
+    }
+
     setLocalReactions(loadLocalReactions(surveyId));
     setCanReact(canReactInBrowser(surveyId));
     async function loadHive() {
@@ -158,7 +170,7 @@ export default function MindHiveView({ survey }) {
       }
     }
     loadHive();
-  }, [surveyId]);
+  }, [router, surveyId]);
 
   const overview = hive?.overview || {};
   const sortedStatements = useMemo(
@@ -219,6 +231,24 @@ export default function MindHiveView({ survey }) {
       const next = index + direction;
       return Math.max(0, Math.min(next, sortedStatements.length - 1));
     });
+  }
+
+  if (!completionChecked || !hasCompleted) {
+    return (
+      <main className="page">
+        <div className="shell">
+          <section className="card stack">
+            <p className="eyebrow">Participant flow</p>
+            <h1>Complete the survey first</h1>
+            <p>Mind Hive opens after you submit and approve your survey summary.</p>
+            <div className="actions">
+              <Link className="button" href={`/s/${surveyId}`}>Take the survey</Link>
+              <Link className="button secondary" href="/help">Help</Link>
+            </div>
+          </section>
+        </div>
+      </main>
+    );
   }
 
   return (

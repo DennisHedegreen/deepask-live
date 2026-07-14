@@ -4,7 +4,13 @@ const checks = [
   {
     name: "root page",
     url: target,
-    validate: async (response) => response.ok
+    validate: async (response) => {
+      if (!response.ok) return false;
+      const html = await response.text();
+      return html.includes("Take the survey") &&
+        html.includes("Help") &&
+        !html.includes(`/s/public-data-possibilities/mind-hive`);
+    }
   },
   {
     name: "participant survey",
@@ -37,7 +43,12 @@ const checks = [
   {
     name: "help page",
     url: `${target}/help`,
-    validate: async (response) => response.ok
+    validate: async (response) => {
+      if (!response.ok) return false;
+      const html = await response.text();
+      return html.includes("Start the survey") &&
+        !html.includes(`/s/public-data-possibilities/mind-hive`);
+    }
   },
   {
     name: "raw responses locked",
