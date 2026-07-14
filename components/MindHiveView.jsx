@@ -72,6 +72,21 @@ function StatementProgress({ currentIndex, total }) {
   );
 }
 
+function ParticipantTopbar({ surveyId }) {
+  return (
+    <header className="topbar">
+      <div className="brand">
+        <strong>DeepAsk</strong>
+        <span>Participant group results</span>
+      </div>
+      <nav className="nav" aria-label="Primary">
+        <Link href={`/s/${surveyId}`}>Survey</Link>
+        <Link href="/help">Help</Link>
+      </nav>
+    </header>
+  );
+}
+
 function StatementCard({ statement, localReactions, onReact, canReact, usingDemo }) {
   const statementLocal = localReactions[statement.id] || {};
   return (
@@ -152,6 +167,7 @@ export default function MindHiveView({ survey }) {
   const [canReact, setCanReact] = useState(false);
   const [completionChecked, setCompletionChecked] = useState(false);
   const [hasCompleted, setHasCompleted] = useState(false);
+  const [reviewComplete, setReviewComplete] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
@@ -262,19 +278,43 @@ export default function MindHiveView({ survey }) {
     );
   }
 
+  if (reviewComplete) {
+    return (
+      <main className="page">
+        <div className="shell">
+          <ParticipantTopbar surveyId={surveyId} />
+          <section className="hero compact-hero">
+            <p className="eyebrow">Survey and Mind Hive complete</p>
+            <h1>Review complete</h1>
+            <p className="lede">
+              Thank you. You have completed the collective statement review.
+            </p>
+          </section>
+          <section className="card stack">
+            <h2>Thank you for taking part.</h2>
+            <p>
+              Your confirmed summary and any reactions you chose have been added
+              to the collective demo map.
+            </p>
+            <p className="note">
+              DeepAsk keeps the group view separate from raw individual answers.
+            </p>
+            <div className="actions">
+              <Link className="button" href="/">Return to DeepAsk</Link>
+              <Link className="button secondary" href={`/s/${surveyId}`}>
+                Start a new survey
+              </Link>
+            </div>
+          </section>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="page">
       <div className="shell">
-        <header className="topbar">
-          <div className="brand">
-            <strong>DeepAsk</strong>
-            <span>Participant group results</span>
-          </div>
-          <nav className="nav" aria-label="Primary">
-            <Link href={`/s/${surveyId}`}>Survey</Link>
-            <Link href="/help">Help</Link>
-          </nav>
-        </header>
+        <ParticipantTopbar surveyId={surveyId} />
 
         <section className="hero">
           <p className="eyebrow">{survey.title}</p>
@@ -394,14 +434,23 @@ export default function MindHiveView({ survey }) {
               >
                 Previous
               </button>
-              <button
-                className="button"
-                type="button"
-                disabled={isLastStatement}
-                onClick={() => moveStatement(1)}
-              >
-                Next statement
-              </button>
+              {isLastStatement ? (
+                <button
+                  className="button"
+                  type="button"
+                  onClick={() => setReviewComplete(true)}
+                >
+                  Finish
+                </button>
+              ) : (
+                <button
+                  className="button"
+                  type="button"
+                  onClick={() => moveStatement(1)}
+                >
+                  Next statement
+                </button>
+              )}
             </div>
 
             {isLastStatement ? (

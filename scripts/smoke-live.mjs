@@ -37,7 +37,7 @@ const checks = [
       return Boolean(data.hive?.overview) &&
         Array.isArray(data.hive?.statements) &&
         data.usingDemo === true &&
-        data.hive.overview.syntheticResponseCount === 6;
+        data.hive.overview.syntheticResponseCount === 12;
     }
   },
   {

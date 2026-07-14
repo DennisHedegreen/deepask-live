@@ -63,8 +63,8 @@ assert(hiveResponse.ok, `mind hive returned HTTP ${hiveResponse.status}`);
 const mindHive = await hiveResponse.json();
 assert(mindHive.usingDemo === true, "synthetic demo flag missing");
 assert(
-  mindHive.hive?.overview?.syntheticResponseCount === 6,
-  "expected six synthetic example responses"
+  mindHive.hive?.overview?.syntheticResponseCount === 12,
+  "expected twelve synthetic example responses"
 );
 assert(
   mindHive.hive?.overview?.submittedResponseCount >= 1,
@@ -85,7 +85,7 @@ assert(reaction.usingDemo === true, "synthetic label was lost after reaction");
 console.log("OK   adaptive follow-up");
 console.log("OK   participant-confirmed summary");
 console.log("OK   response stored with reaction token");
-console.log("OK   six synthetic examples labelled separately");
+console.log("OK   twelve synthetic examples labelled separately");
 console.log("OK   participant reaction saved");
 console.log(`DeepAsk demo flow passed for ${target}`);
 

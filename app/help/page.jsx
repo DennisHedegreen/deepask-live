@@ -35,8 +35,8 @@ export default async function HelpPage() {
           <div className="card stack">
             <h2>Four short steps</h2>
             <ol className="help-steps">
-              <li><strong>Answer</strong> one of the public-data questions.</li>
-              <li><strong>Clarify</strong> your answer with one neutral follow-up.</li>
+              <li><strong>Answer</strong> all three public-data questions.</li>
+              <li><strong>Clarify</strong> each answer with one neutral follow-up.</li>
               <li><strong>Review</strong> the AI-drafted summary and edit it if needed.</li>
               <li><strong>Explore</strong> collective patterns in Mind Hive.</li>
             </ol>
@@ -45,7 +45,7 @@ export default async function HelpPage() {
           <div className="card stack">
             <h2>What is synthetic?</h2>
             <p>
-              Mind Hive begins with six fictional example responses so the group
+              Mind Hive begins with twelve fictional example responses so the group
               view is understandable before several people have used the demo.
             </p>
             <p className="note">
