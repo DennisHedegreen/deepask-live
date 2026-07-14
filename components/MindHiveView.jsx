@@ -17,17 +17,26 @@ const STORAGE_KEY = "deepask-mind-hive-reactions-v1";
 const SURVEY_COMPLETED_PREFIX = "deepask-survey-completed-v1";
 const REACTION_TOKEN_PREFIX = "deepask-reaction-token-v1";
 
-function loadLocalReactions(surveyId) {
+function reactionsStorageKey(surveyId, participantToken) {
+  const token = String(participantToken || "").trim();
+  return token ? `${STORAGE_KEY}:${surveyId}:${token}` : "";
+}
+
+function loadLocalReactions(surveyId, participantToken) {
   if (typeof window === "undefined") return {};
+  const storageKey = reactionsStorageKey(surveyId, participantToken);
+  if (!storageKey) return {};
   try {
-    return JSON.parse(window.localStorage.getItem(`${STORAGE_KEY}:${surveyId}`) || "{}");
+    return JSON.parse(window.localStorage.getItem(storageKey) || "{}");
   } catch {
     return {};
   }
 }
 
-function saveLocalReactions(surveyId, reactions) {
-  window.localStorage.setItem(`${STORAGE_KEY}:${surveyId}`, JSON.stringify(reactions));
+function saveLocalReactions(surveyId, participantToken, reactions) {
+  const storageKey = reactionsStorageKey(surveyId, participantToken);
+  if (!storageKey) return;
+  window.localStorage.setItem(storageKey, JSON.stringify(reactions));
 }
 
 function hasCompletedSurvey(surveyId) {
@@ -156,7 +165,8 @@ export default function MindHiveView({ survey }) {
       return;
     }
 
-    setLocalReactions(loadLocalReactions(surveyId));
+    const participantToken = loadReactionToken(surveyId);
+    setLocalReactions(loadLocalReactions(surveyId, participantToken));
     setCanReact(canReactInBrowser(surveyId));
     async function loadHive() {
       try {
@@ -190,7 +200,8 @@ export default function MindHiveView({ survey }) {
   const isLastStatement = currentIndex >= sortedStatements.length - 1;
 
   async function handleReact(statementId, reactionType) {
-    const current = loadLocalReactions(surveyId);
+    const participantToken = loadReactionToken(surveyId);
+    const current = loadLocalReactions(surveyId, participantToken);
     if (current[statementId]?.[reactionType]) return;
 
     setError("");
@@ -203,7 +214,7 @@ export default function MindHiveView({ survey }) {
           survey_id: surveyId,
           statement_id: statementId,
           reaction_type: reactionType,
-          participant_token: loadReactionToken(surveyId)
+          participant_token: participantToken
         })
       });
       const data = await response.json();
@@ -216,7 +227,7 @@ export default function MindHiveView({ survey }) {
           [reactionType]: true
         }
       };
-      saveLocalReactions(surveyId, nextLocal);
+      saveLocalReactions(surveyId, participantToken, nextLocal);
       setLocalReactions(nextLocal);
       setHive(data.hive);
       setStatus("");

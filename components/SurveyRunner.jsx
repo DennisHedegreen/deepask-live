@@ -79,22 +79,26 @@ function reactionTotal(reactions) {
   );
 }
 
-function loadLocalHiveReactions(surveyId) {
+function hiveReactionsStorageKey(surveyId, participantToken) {
+  const token = String(participantToken || "").trim();
+  return token ? `${HIVE_REACTIONS_PREFIX}:${surveyId}:${token}` : "";
+}
+
+function loadLocalHiveReactions(surveyId, participantToken) {
   if (typeof window === "undefined") return {};
+  const storageKey = hiveReactionsStorageKey(surveyId, participantToken);
+  if (!storageKey) return {};
   try {
-    return JSON.parse(
-      window.localStorage.getItem(`${HIVE_REACTIONS_PREFIX}:${surveyId}`) || "{}"
-    );
+    return JSON.parse(window.localStorage.getItem(storageKey) || "{}");
   } catch {
     return {};
   }
 }
 
-function saveLocalHiveReactions(surveyId, reactions) {
-  window.localStorage.setItem(
-    `${HIVE_REACTIONS_PREFIX}:${surveyId}`,
-    JSON.stringify(reactions)
-  );
+function saveLocalHiveReactions(surveyId, participantToken, reactions) {
+  const storageKey = hiveReactionsStorageKey(surveyId, participantToken);
+  if (!storageKey) return;
+  window.localStorage.setItem(storageKey, JSON.stringify(reactions));
 }
 
 function loadReactionToken(surveyId) {
@@ -228,7 +232,8 @@ function InlineHiveStatement({ statement, localReactions, onReact, usingDemo }) 
           const alreadyReacted = Boolean(statementLocal[type]);
           return (
             <button
-              className={`button ${alreadyReacted ? "" : "secondary"}`}
+              aria-pressed={alreadyReacted}
+              className={`button ${alreadyReacted ? "selected" : "secondary"}`}
               disabled={alreadyReacted}
               key={type}
               type="button"
@@ -482,13 +487,15 @@ export default function SurveyRunner({ survey: surveyInput }) {
     setHive(data.hive);
     setHiveUsingDemo(Boolean(data.usingDemo));
     setHiveIndex(0);
-    setLocalHiveReactions(loadLocalHiveReactions(surveyId));
+    const participantToken = savedWorkpack?.reaction_token || loadReactionToken(surveyId);
+    setLocalHiveReactions(loadLocalHiveReactions(surveyId, participantToken));
     setPhase("groupReview");
     setStatus("");
   }
 
   async function reactToHiveStatement(statementId, reactionType) {
-    const current = loadLocalHiveReactions(surveyId);
+    const participantToken = savedWorkpack?.reaction_token || loadReactionToken(surveyId);
+    const current = loadLocalHiveReactions(surveyId, participantToken);
     if (current[statementId]?.[reactionType]) return;
 
     setError("");
@@ -501,7 +508,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
           survey_id: surveyId,
           statement_id: statementId,
           reaction_type: reactionType,
-          participant_token: savedWorkpack?.reaction_token || loadReactionToken(surveyId)
+          participant_token: participantToken
         })
       });
       const data = await response.json();
@@ -514,7 +521,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
           [reactionType]: true
         }
       };
-      saveLocalHiveReactions(surveyId, nextLocal);
+      saveLocalHiveReactions(surveyId, participantToken, nextLocal);
       setLocalHiveReactions(nextLocal);
       setHive(data.hive);
       setHiveUsingDemo(Boolean(data.usingDemo));
