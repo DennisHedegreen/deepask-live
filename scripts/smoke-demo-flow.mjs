@@ -3,7 +3,7 @@ const target = normaliseTarget(
 );
 const surveyId = "public-data-possibilities";
 const question =
-  "What is one public problem that better access to data could help people understand?";
+  "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?";
 const initialAnswer =
   "Public transport data could help people understand which neighbourhoods cannot reliably reach jobs and public services.";
 

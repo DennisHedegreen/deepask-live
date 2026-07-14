@@ -7,6 +7,7 @@ import {
 } from "@/lib/constants";
 import { demoResponses } from "@/lib/demoData";
 import {
+  deleteSurveyParticipantData,
   getResponses,
   getResponsesForSurvey,
   getSurvey,
@@ -20,6 +21,33 @@ import {
   tooSimilarResponses,
   truncateText
 } from "@/lib/security";
+
+export async function DELETE(request) {
+  try {
+    const limited = rateLimit(request, "response-delete", {
+      limit: 4,
+      windowMs: 10 * 60 * 1000
+    });
+    if (limited) return limited;
+
+    const authError = assertOrganizerCode(request);
+    if (authError) return authError;
+
+    const { searchParams } = new URL(request.url);
+    const surveyId = String(searchParams.get("survey_id") || "").trim();
+    if (!surveyId) {
+      return Response.json({ error: "survey_id is required" }, { status: 400 });
+    }
+
+    const result = await deleteSurveyParticipantData(surveyId);
+    return Response.json({ ok: true, ...result });
+  } catch (error) {
+    return Response.json(
+      { error: error.message || "Could not delete participant data" },
+      { status: error.status || 500 }
+    );
+  }
+}
 
 export async function GET(request) {
   const authError = assertOrganizerCode(request);

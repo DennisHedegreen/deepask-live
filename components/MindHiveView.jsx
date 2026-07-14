@@ -13,9 +13,9 @@ const REACTION_LABELS = {
   missingPerspective: "Missing perspective"
 };
 
-const STORAGE_KEY = "deepask-mind-hive-reactions-v1";
-const SURVEY_COMPLETED_PREFIX = "deepask-survey-completed-v1";
-const REACTION_TOKEN_PREFIX = "deepask-reaction-token-v1";
+const STORAGE_KEY = "deepask-mind-hive-reactions-v2";
+const SURVEY_COMPLETED_PREFIX = "deepask-survey-completed-v2";
+const REACTION_TOKEN_PREFIX = "deepask-reaction-token-v2";
 
 function reactionsStorageKey(surveyId, participantToken) {
   const token = String(participantToken || "").trim();

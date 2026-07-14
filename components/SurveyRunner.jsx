@@ -5,9 +5,14 @@ import Link from "next/link";
 import { DEFAULT_SURVEY, SAFEGUARDS } from "@/lib/constants";
 import { apiPath } from "@/lib/paths";
 
-const SURVEY_COMPLETED_PREFIX = "deepask-survey-completed-v1";
-const HIVE_REACTIONS_PREFIX = "deepask-mind-hive-reactions-v1";
-const REACTION_TOKEN_PREFIX = "deepask-reaction-token-v1";
+const SURVEY_COMPLETED_PREFIX = "deepask-survey-completed-v2";
+const HIVE_REACTIONS_PREFIX = "deepask-mind-hive-reactions-v2";
+const REACTION_TOKEN_PREFIX = "deepask-reaction-token-v2";
+const LEGACY_PARTICIPANT_PREFIXES = [
+  "deepask-survey-completed-v1",
+  "deepask-mind-hive-reactions-v1",
+  "deepask-reaction-token-v1"
+];
 
 const REACTION_LABELS = {
   agree: "Agree",
@@ -109,6 +114,20 @@ function loadReactionToken(surveyId) {
 function saveReactionToken(surveyId, token) {
   if (!token) return;
   window.localStorage.setItem(`${REACTION_TOKEN_PREFIX}:${surveyId}`, token);
+}
+
+function clearLegacyParticipantState(surveyId) {
+  if (typeof window === "undefined") return;
+  const legacyPrefixes = LEGACY_PARTICIPANT_PREFIXES.map(
+    (prefix) => `${prefix}:${surveyId}`
+  );
+  const keys = Array.from(
+    { length: window.localStorage.length },
+    (_, index) => window.localStorage.key(index)
+  ).filter(Boolean);
+  keys
+    .filter((key) => legacyPrefixes.some((prefix) => key === prefix || key.startsWith(`${prefix}:`)))
+    .forEach((key) => window.localStorage.removeItem(key));
 }
 
 function StepIndicator({ activeStep, questionIndex, questions }) {
@@ -253,7 +272,6 @@ export default function SurveyRunner({ survey: surveyInput }) {
   const surveyId = survey.id;
   const surveyCompletedKey = `${SURVEY_COMPLETED_PREFIX}:${surveyId}`;
   const [questions, setQuestions] = useState(() => createInitialQuestions(survey));
-  const [surveyMode, setSurveyMode] = useState(survey.mode || "simple");
   const [questionIndex, setQuestionIndex] = useState(0);
   const [phase, setPhase] = useState("answer");
   const [answerDraft, setAnswerDraft] = useState("");
@@ -302,6 +320,10 @@ export default function SurveyRunner({ survey: surveyInput }) {
     if (currentQuestion?.followup_count > 0) return 1;
     return 0;
   }, [currentQuestion?.followup_count, savedWorkpack, summary]);
+
+  useEffect(() => {
+    clearLegacyParticipantState(surveyId);
+  }, [surveyId]);
 
   useEffect(() => {
     if (phase !== "decision") return;
@@ -536,9 +558,10 @@ export default function SurveyRunner({ survey: surveyInput }) {
     phase === "answer" && currentAiTurn
       ? currentAiTurn.text
       : currentQuestion.question;
-  const isSimpleMode = surveyMode === "simple";
+  const isSimpleMode = survey.mode === "simple";
   const isHiveReview = phase === "groupReview";
-  const gridClassName = isSimpleMode ? "survey-simple-grid" : "grid";
+  const isReviewComplete = phase === "complete";
+  const gridClassName = isSimpleMode || isReviewComplete ? "survey-simple-grid" : "grid";
   const answerButtonText = currentAiTurn ? "Send answer" : "Continue";
   const questionLabel = currentAiTurn ? "AI follow-up" : `Question ${questionIndex + 1}`;
 
@@ -556,36 +579,22 @@ export default function SurveyRunner({ survey: surveyInput }) {
           </nav>
         </header>
 
-        <section className={`hero ${isHiveReview ? "compact-hero" : ""}`}>
+        <section className={`hero ${isHiveReview || isReviewComplete ? "compact-hero" : ""}`}>
           <p className="eyebrow">{survey.subtitle}</p>
-          <h1>{isHiveReview ? "Mind Hive review" : survey.title}</h1>
+          <h1>
+            {isHiveReview ? "Mind Hive review" : isReviewComplete ? "Review complete" : survey.title}
+          </h1>
           <p className="lede">
             {isHiveReview
               ? "Move through the group answers one at a time. React to the collective statements that deserve attention."
-              : isSimpleMode
-              ? survey.intro
-              : "Answer in your own words. DeepAsk can ask neutral follow-up questions, move across several civic questions, and then create a summary you can confirm or edit."}
+              : isReviewComplete
+              ? "Thank you. You have completed both the survey and the Mind Hive review."
+              : survey.intro}
           </p>
-          {!isHiveReview ? <div className="pill-list" style={{ marginTop: 18 }}>
+          {!isHiveReview && !isReviewComplete ? <div className="pill-list" style={{ marginTop: 18 }}>
             <span className="pill">{survey.questions?.length || 0} questions</span>
             <span className="pill">Neutral follow-ups</span>
             <span className="pill">Mind Hive after submit</span>
-          </div> : null}
-          {!isHiveReview ? <div className="actions" style={{ marginTop: 22 }}>
-            <button
-              className={`button ${isSimpleMode ? "" : "secondary"}`}
-              type="button"
-              onClick={() => setSurveyMode("simple")}
-            >
-              Simple survey
-            </button>
-            <button
-              className={`button ${isSimpleMode ? "secondary" : ""}`}
-              type="button"
-              onClick={() => setSurveyMode("advanced")}
-            >
-              Research mode
-            </button>
           </div> : null}
         </section>
 
@@ -652,7 +661,9 @@ export default function SurveyRunner({ survey: surveyInput }) {
                       ? "You can answer one more follow-up, go to the next question, or finish now."
                       : "DeepAsk is generating a required follow-up before you move on."
                     : requiredFollowupAnswered
-                    ? "You can ask another neutral follow-up, move to the next question, or finish now and generate the final civic summary."
+                    ? canMoveNext
+                      ? "You can ask another neutral follow-up or move to the next question."
+                      : "You can ask another neutral follow-up or finish and generate the final civic summary."
                     : "DeepAsk always asks one neutral follow-up before the next main question."}
                 </p>
                 <div className="actions">
@@ -678,14 +689,16 @@ export default function SurveyRunner({ survey: surveyInput }) {
                       {isSimpleMode ? "Next" : "Next question"}
                     </button>
                   ) : null}
-                  <button
-                    className="button secondary"
-                    type="button"
-                    disabled={!answered.length || !allAnsweredQuestionsReady || Boolean(status)}
-                    onClick={generateFinalSummary}
-                  >
-                    {isSimpleMode ? "Finish" : "Finish and generate summary"}
-                  </button>
+                  {isSimpleMode || !canMoveNext ? (
+                    <button
+                      className="button secondary"
+                      type="button"
+                      disabled={!answered.length || !allAnsweredQuestionsReady || Boolean(status)}
+                      onClick={generateFinalSummary}
+                    >
+                      {isSimpleMode ? "Finish" : "Finish and generate summary"}
+                    </button>
+                  ) : null}
                 </div>
                 {!requiredFollowupAnswered ? (
                   <p className="note">
@@ -694,8 +707,9 @@ export default function SurveyRunner({ survey: surveyInput }) {
                 ) : null}
                 {requiredFollowupAnswered && !canAskFollowup ? (
                   <p className="note">
-                    Follow-up limit reached for this question. Move to the next
-                    question or finish.
+                    Follow-up limit reached for this question. {canMoveNext
+                      ? "Move to the next question."
+                      : "Finish when you are ready."}
                   </p>
                 ) : null}
               </section>
@@ -899,7 +913,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
                           Next group answer
                         </button>
                       ) : (
-                        <button className="button" type="button" onClick={resetFlow}>
+                        <button className="button" type="button" onClick={() => setPhase("complete")}>
                           Finish
                         </button>
                       )}
@@ -909,10 +923,32 @@ export default function SurveyRunner({ survey: surveyInput }) {
               </section>
             ) : null}
 
-            {!isSimpleMode ? <ConversationPreview questions={questions} /> : null}
+            {savedWorkpack && phase === "complete" ? (
+              <section className="card stack">
+                <p className="eyebrow">Survey and Mind Hive complete</p>
+                <h2>Thank you for taking part.</h2>
+                <p>
+                  Your confirmed summary and any reactions you chose have been added
+                  to the collective demo map.
+                </p>
+                <p className="note">
+                  DeepAsk keeps the group view separate from raw individual answers.
+                </p>
+                <div className="actions">
+                  <Link className="button" href="/">
+                    Return to DeepAsk
+                  </Link>
+                  <button className="button secondary" type="button" onClick={resetFlow}>
+                    Start a new survey
+                  </button>
+                </div>
+              </section>
+            ) : null}
+
+            {!isSimpleMode && !isReviewComplete ? <ConversationPreview questions={questions} /> : null}
           </div>
 
-          {!isSimpleMode ? <div className="stack">
+          {!isSimpleMode && !isReviewComplete ? <div className="stack">
             <StepIndicator
               activeStep={activeStep}
               questionIndex={questionIndex}
