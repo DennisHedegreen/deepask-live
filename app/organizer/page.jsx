@@ -14,6 +14,10 @@ function summaryOf(response) {
   return response.ai_summary_draft || {};
 }
 
+function responseIsSynthetic(response) {
+  return response.synthetic === true || response.response_origin === "synthetic";
+}
+
 function questionsOf(response) {
   return Array.isArray(response.questions) ? response.questions : [];
 }
@@ -34,7 +38,11 @@ function totalFollowups(response) {
 }
 
 function turnLabel(turn) {
-  if (turn.role === "ai") return "AI follow-up";
+  if (turn.role === "ai") {
+    return turn.model_provider === "local-fallback"
+      ? "DeepAsk contextual follow-up"
+      : "AI follow-up";
+  }
   if (turn.type === "followup_answer") return "Participant follow-up answer";
   return "Participant feedback";
 }
@@ -156,11 +164,12 @@ function downloadText(filename, mimeType, text) {
   URL.revokeObjectURL(url);
 }
 
-function MetricCard({ label, value }) {
+function MetricCard({ detail, label, value }) {
   return (
     <div className="card metric">
       <p className="eyebrow">{label}</p>
       <strong>{value}</strong>
+      {detail ? <span className="note">{detail}</span> : null}
     </div>
   );
 }
@@ -191,6 +200,9 @@ function ResponseCard({ response }) {
           {response.synthetic_persona ? (
             <span className="response-persona">{response.synthetic_persona}</span>
           ) : null}
+          <span className="pill">
+            {responseIsSynthetic(response) ? "Synthetic participant" : "Submitted participant"}
+          </span>
         </div>
         <span>{response.created_at ? new Date(response.created_at).toLocaleString() : ""}</span>
       </div>
@@ -281,6 +293,11 @@ function ResponseCard({ response }) {
                       </span>
                       <span>{turnTypeLabel(turn)}</span>
                       {turn.theme ? <span>{turn.theme}</span> : null}
+                      {turn.model_provider ? (
+                        <span>
+                          {[turn.model_provider, turn.model_name].filter(Boolean).join(" · ")}
+                        </span>
+                      ) : null}
                       {turn.created_at ? <span>{new Date(turn.created_at).toLocaleString()}</span> : null}
                     </div>
                     <p>{turn.text}</p>
@@ -531,6 +548,8 @@ export default function OrganizerPage() {
         responses.length
       ).toFixed(1)
     : "0.0";
+  const syntheticResponseCount = responses.filter(responseIsSynthetic).length;
+  const submittedResponseCount = responses.length - syntheticResponseCount;
 
   const participantRoute = selectedSurvey ? `/s/${selectedSurvey.id}` : "";
   const hiveRoute = selectedSurvey ? `/s/${selectedSurvey.id}/mind-hive` : "";
@@ -706,8 +725,8 @@ export default function OrganizerPage() {
                       <strong>Follow-up limit</strong>
                       <input
                         type="number"
-                        min="0"
-                        max="8"
+                        min="1"
+                        max="3"
                         value={draft.followup_limit ?? 3}
                         onChange={(event) =>
                           updateDraft("followup_limit", Number(event.target.value))
@@ -779,9 +798,13 @@ export default function OrganizerPage() {
         {isUnlocked && activeTab === "results" ? (
           <section className="stack">
             <div className="dashboard-grid">
-              <MetricCard label="Responses" value={responses.length} />
+              <MetricCard
+                detail={`${syntheticResponseCount} synthetic · ${submittedResponseCount} submitted`}
+                label="Responses in analysis"
+                value={responses.length}
+              />
               <MetricCard label="Questions" value={selectedSurvey?.questions?.length || 0} />
-              <MetricCard label="Avg. follow-ups" value={averageFollowups} />
+              <MetricCard label="Avg. follow-ups per response" value={averageFollowups} />
               <MetricCard label="Survey status" value={selectedSurvey?.status || "draft"} />
             </div>
             <div className="results-grid">
@@ -903,7 +926,9 @@ export default function OrganizerPage() {
                   >
                     Download CSV
                   </button>
-                  <span className="pill">{responses.length} saved</span>
+                  <span className="pill">
+                    {syntheticResponseCount} synthetic · {submittedResponseCount} submitted
+                  </span>
                 </div>
               </div>
               <p className="note">

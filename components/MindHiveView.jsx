@@ -330,7 +330,7 @@ export default function MindHiveView({ survey }) {
         {status ? <p className="note">{status}</p> : null}
         {usingDemo ? (
           <p className="warning">
-            Demo dataset: {overview.syntheticResponseCount || 0} fictional examples
+            Demo dataset: {overview.syntheticResponseCount || 0} approved synthetic participant workpacks
             {overview.submittedResponseCount
               ? ` plus ${overview.submittedResponseCount} answer${overview.submittedResponseCount === 1 ? "" : "s"} submitted during this demo`
               : " and no submitted demo answers yet"}.
@@ -471,7 +471,7 @@ export default function MindHiveView({ survey }) {
 
         <footer className="footer">
           Mind Hive shows interpreted group patterns for human review, not final
-          institutional conclusions. Synthetic examples are labelled separately
+          institutional conclusions. Synthetic participant workpacks are labelled separately
           from answers submitted during this demo.
         </footer>
       </div>

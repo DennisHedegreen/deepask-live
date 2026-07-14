@@ -1,0 +1,185 @@
+[
+  {
+    "id": "shared-standards-with-local-context",
+    "title": "Shared standards help only when local context stays visible",
+    "summary": "All ten responses support comparable definitions or indicators, but each also identifies local conditions that can change what the same number means. The recurring tension is between useful cross-region comparison and rankings or common measures that flatten differences in law, infrastructure, service design, geography, costs, or lived access.",
+    "category": "Comparability and context",
+    "signalType": "tension",
+    "keywords": [
+      "standardised",
+      "common definitions",
+      "harmonised",
+      "local context",
+      "local differences",
+      "single ranking",
+      "equal access",
+      "equal risk"
+    ],
+    "seedEvidenceResponseIds": [
+      "SYN-001",
+      "SYN-002",
+      "SYN-003",
+      "SYN-004",
+      "SYN-005",
+      "SYN-006",
+      "SYN-007",
+      "SYN-008",
+      "SYN-009",
+      "SYN-010"
+    ]
+  },
+  {
+    "id": "traceable-reproducible-ai-evidence",
+    "title": "AI-supported patterns need a traceable evidence trail",
+    "summary": "Every response asks for visibility into at least several parts of the analytical chain, including sources, sampling, exclusions, processing, model or prompt documentation, uncertainty, bias tests, and audit records. The shared claim is not that documentation guarantees correctness, but that a pattern should be inspectable and reproducible enough to test its limits.",
+    "category": "Evidence and transparency",
+    "signalType": "agreement",
+    "keywords": [
+      "traceable source data",
+      "data lineage",
+      "provenance",
+      "model documentation",
+      "prompt documentation",
+      "uncertainty estimates",
+      "reproducible",
+      "audit trail"
+    ],
+    "seedEvidenceResponseIds": [
+      "SYN-001",
+      "SYN-002",
+      "SYN-003",
+      "SYN-004",
+      "SYN-005",
+      "SYN-006",
+      "SYN-007",
+      "SYN-008",
+      "SYN-009",
+      "SYN-010"
+    ]
+  },
+  {
+    "id": "human-authority-and-public-challenge",
+    "title": "People must be able to challenge patterns, and humans must remain accountable",
+    "summary": "Across the responses, independent reviewers and affected communities are expected to inspect, contest, narrow, correct, or reject AI-supported patterns. Final authority remains with identifiable public decision-makers, and several responses say weak or misleading patterns should be withheld rather than used with only a disclaimer.",
+    "category": "Human oversight",
+    "signalType": "agreement",
+    "keywords": [
+      "accountable public officials",
+      "final authority",
+      "human review",
+      "affected communities",
+      "challenge and correction",
+      "appeal",
+      "reject the pattern",
+      "withheld from decision-making"
+    ],
+    "seedEvidenceResponseIds": [
+      "SYN-001",
+      "SYN-002",
+      "SYN-003",
+      "SYN-004",
+      "SYN-005",
+      "SYN-006",
+      "SYN-007",
+      "SYN-008",
+      "SYN-009",
+      "SYN-010"
+    ]
+  },
+  {
+    "id": "missing-people-and-missing-data-visible",
+    "title": "Missing people and missing data should be shown, not averaged away",
+    "summary": "Nine responses explicitly describe people, places, failed attempts, or records that ordinary datasets can miss, including informal tenants, inaccessible-service users, non-travellers, small populations, underrepresented language groups, and incomplete local records. They converge on making coverage, missingness, subgroup evidence, and exclusions visible before a comparison or AI pattern is treated as representative.",
+    "category": "Representation and inclusion",
+    "signalType": "concern",
+    "keywords": [
+      "missing groups",
+      "underrepresented",
+      "sampling gaps",
+      "subgroup coverage",
+      "inclusion and exclusion rules",
+      "failed attempts",
+      "unmet journeys",
+      "informal rental markets",
+      "language coverage",
+      "missingness"
+    ],
+    "seedEvidenceResponseIds": [
+      "SYN-001",
+      "SYN-002",
+      "SYN-003",
+      "SYN-005",
+      "SYN-006",
+      "SYN-007",
+      "SYN-008",
+      "SYN-009",
+      "SYN-010"
+    ]
+  },
+  {
+    "id": "publication-must-be-usable",
+    "title": "Publishing data is not enough if people cannot use or understand it",
+    "summary": "Six responses distinguish formal publication from practical access. They point to inaccessible documents, incompatible operator systems, scattered records, missing multilingual formats, unstable interfaces, and explanations that are either too technical or too simplified, suggesting that usable formats and layered explanations are part of transparency itself.",
+    "category": "Practical access",
+    "signalType": "concern",
+    "keywords": [
+      "accessible documents",
+      "accessible explanations",
+      "usable format",
+      "machine-readable",
+      "multilingual",
+      "stable APIs",
+      "open-data portal",
+      "hard to understand"
+    ],
+    "seedEvidenceResponseIds": [
+      "SYN-002",
+      "SYN-003",
+      "SYN-004",
+      "SYN-008",
+      "SYN-009",
+      "SYN-010"
+    ]
+  },
+  {
+    "id": "local-climate-risk-and-adaptation-funding",
+    "title": "A smaller cluster links adaptation funding to local risk and vulnerability",
+    "summary": "Two responses independently prioritise climate-adaptation funding and call for harmonised local evidence combining flood or heat exposure, critical infrastructure, population vulnerability, and completed or committed investment. Both also stress versioned updates and local conditions, so the signal is specific and recurring but should not be presented as a view shared by the whole group.",
+    "category": "Climate adaptation",
+    "signalType": "minority view",
+    "keywords": [
+      "climate-adaptation funding",
+      "adaptation-gap dataset",
+      "climate-risk and vulnerability",
+      "flood and heat exposure",
+      "critical infrastructure",
+      "committed public investment",
+      "completed adaptation measures"
+    ],
+    "seedEvidenceResponseIds": [
+      "SYN-005",
+      "SYN-009"
+    ]
+  },
+  {
+    "id": "end-to-end-contract-and-spending-records",
+    "title": "A smaller cluster asks for end-to-end contract and spending records",
+    "summary": "Two responses specifically call for contract-level records that connect an original budget or award to amendments, payments, suppliers, deadlines, overruns, and delivered results. Their common aim is to make spending outcomes and responsibility inspectable, while retaining local explanations for cost and delivery differences.",
+    "category": "Public spending accountability",
+    "signalType": "minority view",
+    "keywords": [
+      "contract-level dataset",
+      "original award",
+      "contract amendments",
+      "actual payments",
+      "named suppliers",
+      "cost overrun",
+      "delivery dates",
+      "delivered results"
+    ],
+    "seedEvidenceResponseIds": [
+      "SYN-004",
+      "SYN-010"
+    ]
+  }
+]

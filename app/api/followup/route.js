@@ -1,4 +1,5 @@
 import { MAX_FOLLOWUPS_PER_QUESTION } from "@/lib/constants";
+import { generateFallbackFollowup } from "@/lib/fallbackInterview";
 import { generateFollowup } from "@/lib/llmClient";
 import { LIMITS, rateLimit, readLimitedJson, truncateText } from "@/lib/security";
 
@@ -44,16 +45,16 @@ export async function POST(request) {
       latestAnswer,
       followupCount
     });
+    const completedFollowup = String(followup.follow_up_question || "").trim()
+      ? followup
+      : generateFallbackFollowup({ question, latestAnswer, followupCount });
 
     return Response.json({
-      theme: String(followup.theme || "Public data and collective understanding"),
-      follow_up_question: String(
-        followup.follow_up_question ||
-          "What specific example, data point, or decision would make this clearer?"
-      ),
-      should_continue: Boolean(followup.should_continue ?? true),
-      model_provider: String(followup.model_provider || "unknown"),
-      model_name: String(followup.model_name || "")
+      theme: String(completedFollowup.theme || "Public data and collective understanding"),
+      follow_up_question: String(completedFollowup.follow_up_question),
+      should_continue: Boolean(completedFollowup.should_continue ?? true),
+      model_provider: String(completedFollowup.model_provider || "unknown"),
+      model_name: String(completedFollowup.model_name || "")
     });
   } catch (error) {
     return Response.json(

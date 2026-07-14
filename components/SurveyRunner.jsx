@@ -64,13 +64,20 @@ function hasAnsweredRequiredFollowup(question) {
 }
 
 function turnLabel(turn) {
-  if (turn.role === "ai") return "AI follow-up";
+  if (turn.role === "ai") {
+    return turn.model_provider === "local-fallback"
+      ? "DeepAsk contextual follow-up"
+      : "AI follow-up";
+  }
   if (turn.type === "followup_answer") return "Participant follow-up answer";
   return "Participant feedback";
 }
 
-function promptSourceLabel(hasAiTurn) {
-  return hasAiTurn ? "AI follow-up question" : "Organiser question";
+function promptSourceLabel(aiTurn) {
+  if (!aiTurn) return "Organiser question";
+  return aiTurn.model_provider === "local-fallback"
+    ? "DeepAsk contextual follow-up"
+    : "AI follow-up question";
 }
 
 function responseTargetLabel(hasAiTurn) {
@@ -389,7 +396,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
 
   async function askFollowup() {
     setError("");
-    setStatus("Generating one neutral follow-up question...");
+    setStatus("Generating a neutral follow-up question...");
     const latestAnswer = latestParticipantTurn(currentQuestion)?.text || "";
     try {
       const data = await postJson(apiPath("/api/followup"), {
@@ -409,7 +416,9 @@ export default function SurveyRunner({ survey: surveyInput }) {
             role: "ai",
             type: "followup",
             text: data.follow_up_question,
-            theme: data.theme
+            theme: data.theme,
+            model_provider: data.model_provider,
+            model_name: data.model_name
           }
         )
       );
@@ -593,7 +602,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
           </p>
           {!isHiveReview && !isReviewComplete ? <div className="pill-list" style={{ marginTop: 18 }}>
             <span className="pill">{survey.questions?.length || 0} questions</span>
-            <span className="pill">Neutral follow-ups</span>
+            <span className="pill">1–3 neutral follow-ups</span>
             <span className="pill">Mind Hive after submit</span>
           </div> : null}
         </section>
@@ -612,7 +621,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
                 </p>
                 <div className="role-strip" aria-label="Prompt and response source">
                   <span className={`role-chip ${currentAiTurn ? "ai" : "organiser"}`}>
-                    Showing: {promptSourceLabel(Boolean(currentAiTurn))}
+                    Showing: {promptSourceLabel(currentAiTurn)}
                   </span>
                   <span className="role-chip participant">
                     Writing: {responseTargetLabel(Boolean(currentAiTurn))}
@@ -845,8 +854,8 @@ export default function SurveyRunner({ survey: surveyInput }) {
                   <>
                     {hiveUsingDemo ? (
                       <p className="warning">
-                        This map combines {hiveOverview.syntheticResponseCount || 0} fictional
-                        examples with {hiveOverview.submittedResponseCount || 0} answer
+                        This map combines {hiveOverview.syntheticResponseCount || 0} approved
+                        synthetic participant workpacks with {hiveOverview.submittedResponseCount || 0} answer
                         {hiveOverview.submittedResponseCount === 1 ? "" : "s"} submitted during
                         the demo.
                       </p>

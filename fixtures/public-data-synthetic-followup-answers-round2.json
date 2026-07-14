@@ -1,0 +1,32 @@
+[
+  {
+    "participant_id": "SYN-002",
+    "question_id": "Q3",
+    "answer": "The pattern should be withdrawn from the decision process until the gap is publicly documented, missing groups are meaningfully included, and the analysis is rerun and independently reviewed. If the weakness cannot be corrected, officials must exclude the finding rather than merely attach a disclaimer, and affected communities should be able to challenge that judgment.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-006",
+    "question_id": "Q1",
+    "answer": "The evidence should be updated at least quarterly, with consistent historical revisions, automated quality checks, and periodic audits against hospital and patient records. Decision-makers should also see completeness, uncertainty, regional comparability, and any changes in definitions or reporting practices.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-006",
+    "question_id": "Q3",
+    "answer": "The pattern should be withheld from decision-making, clearly flagged, and reanalysed after improving representation or collecting stronger evidence. If the weakness cannot be corrected, reviewers should document it publicly and require decision-makers to rely on other evidence.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-009",
+    "question_id": "Q1",
+    "answer": "Source agencies should publish versioned updates on a fixed schedule, with machine-readable provenance, validation rules, and a public change log. Independent audits and municipal checks should verify high-impact changes, while automated quality tests flag stale, inconsistent, or unusually revised records.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-009",
+    "question_id": "Q2",
+    "answer": "Comparisons should show an indicator dashboard with confidence, coverage, missingness, and local exception notes beside each result, rather than collapsing everything into one score. Any ranking should be optional and filterable, with incomplete cases clearly marked and no automatic penalty for data that is unavailable.",
+    "continue": false
+  }
+]

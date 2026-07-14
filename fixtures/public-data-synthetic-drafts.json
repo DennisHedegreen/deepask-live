@@ -1,0 +1,112 @@
+[
+  {
+    "id": "SYN-001",
+    "persona": "Municipal housing analyst",
+    "context": "Medium-sized Southern European city; rent pressure, social housing allocation, and neighbourhood-level evidence.",
+    "followup_targets": [2, 1, 1],
+    "answers": [
+      "Municipal decisions on rent regulation, social housing investment, and allocation would benefit most from reliable neighbourhood-level data. What is missing is timely, comparable information on actual rents, housing conditions, vacancy, household income, waiting lists, and displacement, linked at a sufficiently local level without exposing individuals.",
+      "Definitions, reporting periods, geographic units, tenure categories, income bands, and data-quality indicators should be standardised. However, comparisons must remain sensitive to local housing systems, informal rental markets, household structures, legal rights, tourism pressure, and differences between neighbourhoods within the same city.",
+      "AI-generated patterns should be supported by traceable source data, documented methods, uncertainty estimates, bias testing, and evidence that minority or less digitally active groups were not excluded. Public officials and relevant community representatives should review the findings, challenge misleading categories, and retain responsibility for the final decision; the AI output should never be treated as a substitute for consultation or local expertise."
+    ]
+  },
+  {
+    "id": "SYN-002",
+    "persona": "Disability-rights advocate",
+    "context": "Italy; access to digital and in-person public services.",
+    "followup_targets": [1, 1, 2],
+    "answers": [
+      "Decisions about funding accessibility improvements in public services would benefit most from better public data. What is missing is consistent, disaggregated evidence on whether disabled people can actually complete essential tasks online and in person, including failed attempts, waiting times, inaccessible procedures, and the availability of human alternatives.",
+      "Countries should standardise definitions, accessibility indicators, collection methods, metadata, and reporting of missing data so comparisons are meaningful. However, interpretation must remain sensitive to different legal systems, service structures, languages, infrastructure, and disability communities; a common score should not erase local barriers or lived experience.",
+      "AI-generated patterns should only be used when the source data, sampling limits, processing steps, model assumptions, and uncertainty are publicly documented and independently auditable. Findings should be checked against raw responses, tested for underrepresentation and discriminatory bias, and validated through accessible consultation with affected communities. Accountable public officials—not the AI system—must make and explain the final decision, with a clear route for challenge and correction."
+    ]
+  },
+  {
+    "id": "SYN-003",
+    "persona": "Rural mobility organiser",
+    "context": "Eastern Poland; access to jobs, hospitals, schools, and reliable transport.",
+    "followup_targets": [1, 1, 2],
+    "answers": [
+      "Regional transport funding would benefit most, especially decisions about bus and rail links connecting rural communities to jobs, hospitals, and schools. What is missing is reliable, route-level data on cancellations, actual travel times, passenger needs, and the people who cannot travel because no suitable service exists.",
+      "Definitions, collection periods, geographic units, service-frequency measures, and accessibility indicators should be standardised. Local context must remain visible, including settlement patterns, cross-border travel, seasonal work, road conditions, and whether one missed connection makes an entire journey impossible.",
+      "The original data sources, sampling methods, known gaps, model instructions, and uncertainty should be publicly documented. Independent reviewers and affected communities should be able to challenge the patterns, and accountable public officials—not the AI—must decide whether the evidence is strong enough to influence policy."
+    ]
+  },
+  {
+    "id": "SYN-004",
+    "persona": "Investigative procurement journalist",
+    "context": "Greece; infrastructure spending, contract changes, and public accountability.",
+    "followup_targets": [2, 1, 1],
+    "answers": [
+      "Public procurement decisions for major infrastructure projects would benefit most, especially when contracts are repeatedly amended after award. What is missing is timely, machine-readable data linking tenders, beneficial owners, subcontractors, cost revisions, completion delays, and political or administrative responsibility.",
+      "Countries should standardise core definitions, reporting periods, procurement identifiers, spending categories, and quality metadata so comparisons are meaningful. Local legal frameworks, purchasing power, geography, administrative capacity, and the social purpose of spending must remain visible, because identical figures can reflect very different realities.",
+      "AI-generated patterns should be supported by accessible source data, documented methods, uncertainty estimates, bias testing, and reproducible audits by independent experts. Officials must disclose how the analysis influenced the decision, while accountable humans retain authority to challenge, contextualise, or reject the model’s conclusions."
+    ]
+  },
+  {
+    "id": "SYN-005",
+    "persona": "Climate-adaptation planner",
+    "context": "Netherlands; flood risk, heat, critical infrastructure, and fair adaptation funding.",
+    "followup_targets": [2, 1, 1],
+    "answers": [
+      "Allocation of climate-adaptation funding would benefit most, especially for flood protection, heat resilience, and critical infrastructure. What is missing is comparable, neighbourhood-level data combining physical hazards, infrastructure dependencies, social vulnerability, and actual investment outcomes.",
+      "Hazard definitions, emissions scenarios, time horizons, vulnerability indicators, geographic resolution, and reporting methods should be standardised. However, interpretation must remain sensitive to local geography, infrastructure, housing conditions, institutional capacity, and community priorities.",
+      "AI-generated patterns should be supported by representative and traceable source data, published methods, uncertainty ranges, bias testing, and an accessible explanation of how findings affected the decision. Independent experts and affected communities should review the results, while accountable public officials retain final authority and provide a clear appeal or correction process."
+    ]
+  },
+  {
+    "id": "SYN-006",
+    "persona": "Public-health researcher",
+    "context": "Denmark; waiting times, unequal access, prevention, and small-population privacy.",
+    "followup_targets": [1, 1, 2],
+    "answers": [
+      "Decisions about how healthcare capacity is distributed—especially specialist services, mental health care, and preventive programmes—would benefit most. We lack timely, comparable data on actual waiting times, unmet need, socioeconomic barriers, and patient outcomes, with privacy-preserving detail for small populations.",
+      "Definitions, time periods, demographic categories, outcome measures, and methods for reporting missing data should be standardised. Interpretation must remain sensitive to differences in healthcare systems, geography, population size, referral practices, and local inequalities.",
+      "The underlying responses, sampling method, limitations, and model workflow should be documented, with independent checks for bias, robustness, and privacy risks. AI-generated patterns should be treated as hypotheses, not findings, and reviewed by domain experts, affected communities, and accountable public officials before influencing a decision."
+    ]
+  },
+  {
+    "id": "SYN-007",
+    "persona": "Trade-union data specialist",
+    "context": "Germany; labour-market transitions, skills, job quality, and worker voice.",
+    "followup_targets": [1, 2, 1],
+    "answers": [
+      "Decisions on funding and governing regional labour-market transitions would benefit most, especially where decarbonisation and automation may displace workers. What is missing is timely, linked data on occupations, skills, wages, contract quality, training outcomes, and worker participation, broken down by region and demographic group.",
+      "Definitions, classifications, time periods, sampling methods, and measures of pay, employment status, working time, and job quality should be standardised. However, comparisons must preserve local context such as collective-bargaining systems, living costs, industrial structure, welfare institutions, and the legal meaning of employment categories.",
+      "AI-generated patterns should be traceable to documented, representative data, with published methods, uncertainty estimates, bias tests, and clear limits on what can be inferred. Independent experts and representatives of affected workers should review the analysis, while accountable public officials retain decision authority and provide routes for challenge and correction."
+    ]
+  },
+  {
+    "id": "SYN-008",
+    "persona": "Multilingual public-service volunteer",
+    "context": "France; migrants, language access, and administrative navigation.",
+    "followup_targets": [1, 1, 2],
+    "answers": [
+      "Decisions about access to housing, residency support, and essential social services would benefit greatly from reliable public data. What is missing is joined-up, multilingual information showing eligibility, waiting times, refusal reasons, and successful appeals, broken down by location and administrative status without exposing individuals.",
+      "Definitions, reporting periods, service outcomes, and demographic categories should be standardised enough to make comparisons meaningful. However, interpretation must remain sensitive to differences in law, migration systems, language access, local service capacity, and the fact that some groups may avoid public institutions because of fear or previous discrimination.",
+      "Authorities should publish the source data, sampling gaps, methodology, uncertainty, and known biases, including which languages or communities were underrepresented. AI-generated patterns should be checked against anonymised responses, reviewed by independent experts and representatives of affected communities, and never treated as evidence on their own. A named public official should remain responsible for the decision, with a clear process for challenge, correction, and appeal."
+    ]
+  },
+  {
+    "id": "SYN-009",
+    "persona": "Open-data engineer",
+    "context": "Estonia; interoperability, provenance, APIs, privacy, and reproducibility.",
+    "followup_targets": [1, 1, 3],
+    "answers": [
+      "Decisions about allocating climate-adaptation funding would benefit greatly from better public data. What is missing is interoperable, regularly updated local data on flood, heat, infrastructure, demographics, and actual spending, with clear provenance and stable APIs. Without that, funding tends to follow political visibility rather than reproducible assessments of risk and vulnerability.",
+      "Definitions, units, time periods, geographic identifiers, metadata, licensing, and data-quality indicators should be standardised. The comparison method should also expose missing values and revisions instead of hiding them in a single ranking. Local legal frameworks, service models, demographic conditions, and the reasons behind an indicator must remain visible so standardisation does not erase context.",
+      "The underlying response data, sampling method, cleaning steps, model version, prompts, uncertainty, and known limitations should be documented sufficiently for an independent team to reproduce the analysis. Privacy safeguards and bias tests should be mandatory, with public access to aggregated evidence and an audit trail linking every claimed pattern back to source material. A diverse human review panel must be able to challenge, reject, or narrow the AI findings, and the final decision-maker should remain publicly accountable."
+    ]
+  },
+  {
+    "id": "SYN-010",
+    "persona": "Small-business owner and sceptical citizen",
+    "context": "Portugal; local services, tax spending, administrative burden, and understandable evidence.",
+    "followup_targets": [1, 1, 1],
+    "answers": [
+      "Decisions about how municipal and EU funds are spent on local services would benefit most. Citizens and small businesses need clear, timely data showing the original budget, actual spending, contractors, delivery dates, and measurable results—not scattered documents that are hard to understand.",
+      "Definitions, measurement periods, units, data quality rules, and reporting formats should be standardised so comparisons are fair. But differences in local wages, population density, infrastructure, tax systems, and administrative capacity must remain visible rather than being flattened into a single ranking.",
+      "Authorities should publish the source data, collection methods, model limitations, uncertainty, and examples of how conclusions were produced. Independent reviewers and accountable public officials must check for bias, manipulation, and missing groups, and AI findings should never replace direct evidence or the final human decision."
+    ]
+  }
+]

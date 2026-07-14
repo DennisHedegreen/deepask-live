@@ -21,6 +21,7 @@ const include = [
   "public",
   "deploy",
   "docs",
+  "fixtures",
   "lib",
   "scripts",
   ".dockerignore",

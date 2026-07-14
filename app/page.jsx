@@ -21,9 +21,9 @@ export default async function Home() {
           <p className="eyebrow">A short public-data demonstration</p>
           <h1>DeepAsk</h1>
           <p className="lede">
-            Answer a public-data question in your own words. DeepAsk asks one
-            neutral follow-up, lets you approve the summary, and adds it to a
-            collective map without publishing your raw answer.
+            Answer public-data questions in your own words. DeepAsk asks one
+            required neutral follow-up and lets you choose whether to continue,
+            then you approve the summary before it enters the collective map.
           </p>
           <div className="pill-list" style={{ marginTop: 22 }}>
             <span className="pill">Private answers</span>

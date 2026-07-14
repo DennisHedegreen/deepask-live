@@ -1,0 +1,182 @@
+[
+  {
+    "participant_id": "SYN-001",
+    "question_id": "Q1",
+    "answer": "Municipal tenancy records, social housing databases, anonymised tax and benefits data, building registries, and regularly sampled rent surveys could be combined using privacy-preserving linkage. Results should be published only in aggregated neighbourhood indicators, with minimum group sizes and independent disclosure-risk checks.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-001",
+    "question_id": "Q2",
+    "answer": "Informal rental markets create the greatest difficulty because they are unevenly recorded and often concentrated among groups already missing from official statistics. This can make one region appear more affordable or stable simply because more housing activity remains invisible.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-001",
+    "question_id": "Q3",
+    "answer": "Authorities should maintain a public data lineage register, model cards, versioned analysis code, bias and subgroup performance reports, and an auditable record of human review decisions. An independent review panel should test whether the patterns change under alternative assumptions and document why officials accepted, modified, or rejected the AI output.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-002",
+    "question_id": "Q1",
+    "answer": "Public bodies often group all disabled people together, do not record failed service attempts or forced switching between digital and in-person channels, and store relevant data across disconnected municipal and national systems. Requests are also frequently answered with inaccessible documents or incomplete datasets.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-002",
+    "question_id": "Q2",
+    "answer": "Collection methods are the biggest challenge. A uniform online survey may appear comparable while excluding people who need assistance, alternative formats, or offline participation, so Europe needs a common evidence core with locally appropriate accessible ways to contribute.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-002",
+    "question_id": "Q3",
+    "answer": "Audit documentation can be technically dense, published in inaccessible PDFs, or limited by procurement secrecy, while simplified public summaries may hide important uncertainty. Producing layered, accessible explanations that affected communities can test—not merely read—will require resources and genuine co-design.",
+    "continue": true
+  },
+  {
+    "participant_id": "SYN-003",
+    "question_id": "Q1",
+    "answer": "Small operators often use different reporting systems, while cancellations may be recorded internally but never published in a usable format. Passenger surveys also miss people who have stopped travelling because the service is too unreliable.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-003",
+    "question_id": "Q2",
+    "answer": "Access to a hospital within 60 minutes is difficult to standardise because a route that appears available may involve an unreliable connection, a long walk, or no return service after an appointment.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-003",
+    "question_id": "Q3",
+    "answer": "The authority should publish the pattern, source data, methodology, and uncertainties, then allow independent experts and local groups to submit corrections or objections during a defined review period. Responses should be publicly logged, and unresolved disputes should be presented to accountable officials before any decision.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-004",
+    "question_id": "Q1",
+    "answer": "A contract-level change log linking the original award to every amendment, payment, subcontractor, delay, and cost overrun would make the greatest difference. It should be published continuously by each contracting authority through a national procurement platform using common identifiers.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-004",
+    "question_id": "Q2",
+    "answer": "The first standard should be the final cost compared with the original awarded value, calculated consistently across jurisdictions. Beside it, authorities must always show locally specific causes such as inflation, geological conditions, legal appeals, or changes in project scope.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-004",
+    "question_id": "Q3",
+    "answer": "Journalists, civil society groups, affected communities, auditors, opposition representatives, and the responding public should be able to inspect and challenge the pattern. They should see the anonymised source responses, inclusion and exclusion rules, model and prompt documentation, uncertainty measures, subgroup results, and a traceable explanation of how the conclusion was produced.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-005",
+    "question_id": "Q1",
+    "answer": "A neighbourhood-level adaptation-gap dataset would help most, combining projected flood and heat exposure, critical-infrastructure vulnerability, social vulnerability, and committed public investment. National statistical offices should coordinate publication, with municipalities, water authorities, and infrastructure operators supplying regularly updated data.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-005",
+    "question_id": "Q2",
+    "answer": "The first standard should be a common measure of expected annual harm under agreed climate scenarios, covering people, essential services, and economic loss. It must always be shown beside local factors such as elevation, housing quality, drainage capacity, and residents’ ability to recover.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-005",
+    "question_id": "Q3",
+    "answer": "Independent researchers, auditors, civil-society organisations, affected communities, and elected representatives should be able to inspect and challenge the pattern. They should see the source responses, sampling and weighting methods, exclusions, model and prompt documentation, uncertainty estimates, bias tests, and an audit trail linking the pattern to the proposed decision.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-006",
+    "question_id": "Q1",
+    "answer": "A patient-level referral-to-treatment dataset, linked to cancellations, non-attendance, socioeconomic position, and outcomes, would most improve the decision. It should be published in privacy-preserving form by the Danish Health Data Authority, with regional validation.",
+    "continue": true
+  },
+  {
+    "participant_id": "SYN-006",
+    "question_id": "Q2",
+    "answer": "The first standardised indicator should be the median and 90th-percentile time from clinically accepted referral to completed treatment. It must always be shown beside local service availability and travel distance, because equal waiting times do not necessarily mean equal access.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-006",
+    "question_id": "Q3",
+    "answer": "Independent researchers, clinicians, civil-society groups, affected communities, data-protection authorities, and elected decision-makers should be able to inspect or challenge the pattern. They should see the sampling and response data at a safe level of detail, subgroup coverage, missingness, analysis code, model and prompt documentation, uncertainty estimates, and records of human validation without exposing small populations.",
+    "continue": true
+  },
+  {
+    "participant_id": "SYN-007",
+    "question_id": "Q1",
+    "answer": "A regional worker-transition dataset linking job losses, new vacancies, retraining participation, post-training employment, wages, contract type, and collective-agreement coverage would be most valuable. National statistical offices should publish it using harmonised EU guidance and administrative data from employment agencies and social insurance systems.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-007",
+    "question_id": "Q2",
+    "answer": "The first standardised indicator should be the share of displaced workers who enter sustained, good-quality employment within twelve months. It must always be shown beside regional living costs and collective-bargaining coverage, because the same wage or contract can represent very different job quality locally.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-007",
+    "question_id": "Q3",
+    "answer": "Trade unions, affected workers, independent researchers, civil-society organisations, auditors, and elected oversight bodies should be able to inspect and challenge the pattern. They should see the source data and sampling limits, coding rules, model documentation, uncertainty, subgroup results, bias tests, and an audit trail showing how human judgments shaped the result.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-008",
+    "question_id": "Q1",
+    "answer": "A multilingual dataset tracking social-housing applications from submission to decision—including waiting time, refusal reason, appeal, and final outcome—would improve decisions most. Local housing authorities should publish it in a standard format, coordinated by the national government.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-008",
+    "question_id": "Q2",
+    "answer": "The definition of housing waiting time should be standardised first, measured from a complete application to an actual housing offer or final decision. It must always be shown beside local eligibility rules and the availability of suitable housing.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-008",
+    "question_id": "Q3",
+    "answer": "Independent auditors, affected residents, migrant-support organisations, journalists, and elected representatives should be able to inspect or challenge the pattern. They should see anonymised source responses, language coverage, sampling gaps, model instructions, uncertainty, and examples of how the pattern was produced.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-009",
+    "question_id": "Q1",
+    "answer": "A harmonised, parcel- or neighbourhood-level climate-risk and vulnerability dataset would improve adaptation funding most, combining hazard exposure, critical infrastructure, population vulnerability, and completed adaptation measures. National environmental agencies should publish it through stable APIs, using municipal source data and a shared European schema.",
+    "continue": true
+  },
+  {
+    "participant_id": "SYN-009",
+    "question_id": "Q2",
+    "answer": "The first standardised indicator should be population exposed to a specified climate hazard, with common thresholds, spatial resolution, and reference periods. It must always be shown beside local building standards, protective infrastructure, and demographic vulnerability, because equal exposure does not mean equal risk.",
+    "continue": true
+  },
+  {
+    "participant_id": "SYN-009",
+    "question_id": "Q3",
+    "answer": "Independent researchers, civil-society organisations, affected communities, data-protection authorities, and public auditors should be able to inspect and challenge the pattern. They should see representative source excerpts or privacy-preserving records, sampling and exclusion rules, provenance, transformations, model and prompt versions, uncertainty measures, and evidence of contradictory responses.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-010",
+    "question_id": "Q1",
+    "answer": "A contract-level dataset linking planned budgets, actual payments, named suppliers, deadlines, and delivered results would improve the decision most. Municipalities should publish it through a consistent national open-data portal.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-010",
+    "question_id": "Q2",
+    "answer": "Cost per completed service delivered should be standardised first, with the same rules for what counts as completed. Local wage levels and population density must always appear beside it.",
+    "continue": false
+  },
+  {
+    "participant_id": "SYN-010",
+    "question_id": "Q3",
+    "answer": "Public auditors, elected representatives, independent researchers, journalists, and affected citizens should be able to inspect or challenge the pattern. They should see anonymised source responses, sampling and exclusion rules, demographic coverage, model instructions, uncertainty, and the reasoning connecting the evidence to the claimed pattern.",
+    "continue": false
+  }
+]

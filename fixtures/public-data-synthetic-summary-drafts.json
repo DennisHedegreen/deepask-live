@@ -1,0 +1,252 @@
+[
+  {
+    "participant_id": "SYN-001",
+    "main_theme": "Neighbourhood housing evidence with privacy and accountability",
+    "barrier_or_need": "Housing decisions lack timely, comparable neighbourhood-level evidence, while informal rental activity and groups missing from official statistics can distort comparisons.",
+    "suggested_improvement": "Combine administrative records and sampled surveys through privacy-preserving linkage, publish aggregated indicators with common definitions, and require traceable, independently reviewed AI analysis.",
+    "neutral_summary": "The response calls for timely neighbourhood-level housing data that connects rents, housing conditions, incomes, waiting lists, vacancy, and displacement without exposing individuals. It supports common definitions while warning that informal rental markets and local housing systems can make comparisons misleading. AI-derived patterns should remain traceable, testable, correctable, and subject to documented human and community review.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Privacy-preserving neighbourhood housing data",
+        "summary": "Housing regulation, investment, and allocation would benefit from linked municipal, housing, tax, benefits, building, and survey data published only as disclosure-checked neighbourhood indicators."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Comparable housing measures with local context",
+        "summary": "Definitions, periods, geographic units, tenure, income bands, and quality indicators should be standardised, while local housing systems and especially under-recorded informal rental markets remain visible."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Traceable and correctable AI analysis",
+        "summary": "AI patterns should include data lineage, methods, uncertainty, bias checks, model documentation, alternative-assumption testing, and an auditable record of accountable human and community review."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-002",
+    "main_theme": "Accessible public-service evidence and inclusive oversight",
+    "barrier_or_need": "Public bodies often lack disaggregated evidence about failed service attempts and channel switching, while inaccessible collection and publication methods can exclude the people whose access is being assessed.",
+    "suggested_improvement": "Use a common evidence core with locally accessible participation methods, publish layered and testable explanations, and withdraw weak AI patterns until missing groups and evidence gaps are addressed.",
+    "neutral_summary": "The response seeks disaggregated evidence about whether people can complete essential public-service tasks online and in person, including failures, waits, inaccessible procedures, and human alternatives. It argues that comparable indicators must be collected through accessible local methods rather than a single uniform channel. AI patterns should be independently auditable and co-reviewed by affected communities, with misleading or weak findings removed from decisions until corrected.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Evidence of real service accessibility",
+        "summary": "Accessibility funding needs disaggregated evidence on successful and failed service use across digital and in-person channels, rather than broad categories and disconnected or inaccessible datasets."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Accessible collection across local contexts",
+        "summary": "Definitions, indicators, metadata, missing-data reporting, and core evidence should be comparable, but collection must support locally appropriate assistance, formats, languages, and offline participation."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Auditable AI with meaningful community challenge",
+        "summary": "Documentation should be accessible as well as technically complete, and patterns with missing groups, weak evidence, or misleading conclusions should be withdrawn and rerun before influencing a decision."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-003",
+    "main_theme": "Reliable rural mobility evidence with public challenge",
+    "barrier_or_need": "Published transport data can omit cancellations, failed connections, and people who no longer travel, making nominal service availability a poor measure of practical access.",
+    "suggested_improvement": "Standardise route reliability and accessibility measures while retaining journey-specific local context, and publish AI-supported conclusions through an open correction and objection process.",
+    "neutral_summary": "The response prioritises route-level evidence for rural transport funding, including cancellations, actual travel times, passenger needs, and unmet journeys. It supports common service and accessibility measures but says local settlement patterns, road conditions, and connection constraints must remain visible. Any AI-derived pattern should be published with its sources, method, uncertainty, and a documented process for expert and community challenge before officials act on it.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Rural transport reliability and unmet journeys",
+        "summary": "Regional funding needs usable data from operators on cancellations and actual journeys, alongside evidence from people whose lack of a reliable service prevents them from travelling."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Standard access indicators with journey context",
+        "summary": "Definitions, periods, geography, frequency, and accessibility should be standardised, but indicators must show whether connections, walking distances, and return services make a journey workable."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Open review of AI-supported transport patterns",
+        "summary": "Authorities should disclose data, methods, gaps, instructions, and uncertainty, allow corrections and objections during a defined review period, and log unresolved disputes for accountable officials."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-004",
+    "main_theme": "Connected procurement records and inspectable AI analysis",
+    "barrier_or_need": "Procurement records do not consistently connect awards, amendments, payments, subcontractors, delays, cost overruns, and responsibility, which limits scrutiny of changing infrastructure contracts.",
+    "suggested_improvement": "Publish continuous contract-level change logs with common identifiers and comparable cost measures, preserve explanations of local cost changes, and expose the evidence and reasoning behind AI-supported conclusions.",
+    "neutral_summary": "The response calls for machine-readable procurement data that links an infrastructure contract from its original award through amendments, payments, subcontracting, delays, and final costs. It favours consistent comparison of final and awarded values while retaining locally specific explanations for changes. AI-derived patterns should be reproducible and open to challenge by public and independent reviewers, with accountable officials explaining how the analysis affected a decision.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Contract-level procurement change logs",
+        "summary": "Each contracting authority should continuously publish a common-identifier record linking the original award to amendments, payments, subcontractors, delays, overruns, and administrative responsibility."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Comparable contract costs with local explanations",
+        "summary": "Final cost relative to the awarded value should be calculated consistently, while inflation, geology, legal appeals, project scope, purchasing power, and administrative context remain visible."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Publicly inspectable procurement analysis",
+        "summary": "Reviewers should be able to examine anonymised responses, inclusion rules, model and prompt documentation, uncertainty, subgroup results, and the traceable reasoning that produced an AI-supported pattern."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-005",
+    "main_theme": "Comparable and locally grounded climate-adaptation evidence",
+    "barrier_or_need": "Climate-adaptation funding lacks integrated neighbourhood evidence linking hazards, infrastructure dependencies, social vulnerability, and investment outcomes.",
+    "suggested_improvement": "Create a regularly updated adaptation-gap dataset using common hazard and harm measures alongside local recovery conditions, with traceable evidence, independent review, and accountable appeal routes.",
+    "neutral_summary": "The response supports neighbourhood-level evidence to guide funding for flood protection, heat resilience, and critical infrastructure. It proposes shared hazard scenarios and expected-harm measures while keeping local geography, housing, infrastructure, institutional capacity, and recovery conditions visible. AI-supported patterns should be traceable, uncertainty-aware, independently reviewable, and open to challenge by affected communities before accountable officials decide.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Neighbourhood adaptation-gap data",
+        "summary": "National coordination should combine local hazard exposure, critical-infrastructure vulnerability, social vulnerability, and committed investment into a regularly updated neighbourhood-level dataset."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Common climate-harm measures with local resilience context",
+        "summary": "Climate scenarios, time horizons, hazard and vulnerability measures, and reporting should be comparable, while elevation, housing, drainage, infrastructure, and residents' ability to recover remain visible."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Challengeable climate-risk patterns",
+        "summary": "Independent and affected reviewers should see source responses, sampling and weighting, exclusions, prompts, uncertainty, bias tests, and the audit trail connecting a pattern to a proposed funding decision."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-006",
+    "main_theme": "Equitable healthcare access evidence with privacy safeguards",
+    "barrier_or_need": "Healthcare planning lacks timely and comparable evidence on referral-to-treatment time, unmet need, access barriers, outcomes, and small-population coverage.",
+    "suggested_improvement": "Publish privacy-preserving linked access data with regular quality checks and contextual indicators, and treat AI patterns as hypotheses that require independent, community, and accountable official review.",
+    "neutral_summary": "The response calls for privacy-preserving healthcare data that connects accepted referrals, treatment, cancellations, non-attendance, socioeconomic position, and outcomes. It supports common waiting-time measures but says service availability, travel distance, system design, and local inequality must accompany comparisons. AI-derived patterns should be treated as hypotheses and withheld from decisions when representation, evidence quality, robustness, or privacy cannot be adequately demonstrated.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Linked referral-to-treatment evidence",
+        "summary": "Healthcare capacity decisions need a privacy-preserving referral-to-treatment dataset linked to cancellations, non-attendance, socioeconomic position, and outcomes, updated regularly and checked for completeness and comparability."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Comparable waiting times with access context",
+        "summary": "Median and 90th-percentile time from accepted referral to completed treatment should be standardised, while local service availability, travel distance, referral practices, and inequalities remain visible."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Hypothesis-based AI review with safe evidence access",
+        "summary": "Reviewers should have privacy-safe access to sampling, subgroup coverage, missingness, code, model and prompt records, uncertainty, and validation, and weak patterns should be withheld and reanalysed."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-007",
+    "main_theme": "Worker-centred evidence for labour-market transitions",
+    "barrier_or_need": "Regional transition decisions lack linked evidence connecting displacement, retraining, subsequent employment, wages, contract quality, and worker participation.",
+    "suggested_improvement": "Publish harmonised regional transition outcomes alongside local job-quality context, and require transparent AI analysis that affected workers and their representatives can inspect and challenge.",
+    "neutral_summary": "The response seeks linked regional data to assess how decarbonisation and automation affect job loss, retraining, employment outcomes, wages, contracts, and collective-agreement coverage. It supports a common measure of sustained good-quality employment while preserving differences in living costs, bargaining systems, industrial structure, and employment law. AI-derived patterns should remain traceable, bias-tested, limited in their claims, and subject to review by affected workers, independent experts, and accountable officials.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Regional worker-transition outcomes",
+        "summary": "A harmonised dataset should link job losses, vacancies, retraining participation, post-training employment, wages, contract type, and collective-agreement coverage by region and demographic group."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Comparable employment outcomes with local job quality",
+        "summary": "The share of displaced workers entering sustained good-quality work within twelve months should be comparable, with regional living costs and bargaining coverage shown beside it."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Worker-reviewable AI patterns",
+        "summary": "Affected workers, trade unions, researchers, civil society, auditors, and elected bodies should be able to inspect source limits, coding, model documentation, uncertainty, subgroup results, bias tests, and human judgments."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-008",
+    "main_theme": "Multilingual service-access evidence with representation safeguards",
+    "barrier_or_need": "Housing and social-service data are fragmented and may omit language coverage, refusal and appeal outcomes, and groups who avoid institutions because of fear or prior discrimination.",
+    "suggested_improvement": "Publish standard multilingual application-to-outcome data with local eligibility and capacity context, and require AI analysis to disclose underrepresentation and support public challenge and appeal.",
+    "neutral_summary": "The response calls for joined-up multilingual evidence on access to housing, residency support, and essential services, including eligibility, waits, refusals, appeals, and final outcomes. It supports common definitions such as housing waiting time while retaining local law, eligibility rules, service capacity, language access, and institutional avoidance. AI patterns should disclose missing languages and communities, be checked against anonymised evidence, and remain subject to independent review, correction, appeal, and named official responsibility.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Multilingual housing application outcomes",
+        "summary": "Local authorities should publish standard multilingual data following social-housing applications from complete submission through waiting, refusal, appeal, offer, and final outcome without exposing individuals."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Common waiting-time definitions with local access context",
+        "summary": "Housing waiting time should run from a complete application to an offer or final decision, with local eligibility, housing availability, language access, law, and service capacity shown alongside it."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Transparent AI with language and sampling coverage",
+        "summary": "Reviewers should see anonymised responses, language coverage, sampling gaps, model instructions, uncertainty, and examples of pattern formation, with clear routes for correction, challenge, and appeal."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-009",
+    "main_theme": "Interoperable climate data and reproducible public analysis",
+    "barrier_or_need": "Climate-adaptation decisions are hindered by fragmented, stale, and poorly documented local datasets and comparisons that hide missing values, revisions, and local exceptions.",
+    "suggested_improvement": "Publish versioned climate-risk and vulnerability data through stable APIs and a shared schema, show coverage and local context beside comparisons, and make AI analysis reproducible and publicly challengeable.",
+    "neutral_summary": "The response supports interoperable and regularly updated local data to make climate-adaptation funding reproducible rather than dependent on visibility. It proposes common climate-exposure measures and data standards, accompanied by provenance, missingness, uncertainty, revisions, and local vulnerability and infrastructure context. AI-derived patterns should link back to privacy-preserving source evidence and be reproducible, bias-tested, and open to challenge by independent and affected reviewers.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Versioned climate-risk data through stable APIs",
+        "summary": "Environmental agencies should publish harmonised local climate-risk and vulnerability data with provenance, scheduled updates, validation rules, change logs, municipal checks, and independent audits."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Transparent comparisons without one opaque ranking",
+        "summary": "Definitions, units, geography, metadata, licensing, and quality indicators should be common, while dashboards show confidence, coverage, missingness, revisions, local exceptions, infrastructure, and demographic vulnerability."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Reproducible and challengeable AI analysis",
+        "summary": "Independent reviewers should be able to inspect privacy-safe evidence, sampling and exclusion rules, provenance, transformations, model and prompt versions, uncertainty, contradictory responses, and the human audit trail."
+      }
+    ]
+  },
+  {
+    "participant_id": "SYN-010",
+    "main_theme": "Understandable public-spending evidence with accountable oversight",
+    "barrier_or_need": "Local spending evidence is scattered and difficult to interpret, and simple cross-region rankings can hide differences in wages, density, infrastructure, tax systems, and administrative capacity.",
+    "suggested_improvement": "Publish contract-level budget, payment, supplier, deadline, and delivery data through a consistent portal, pair common efficiency measures with local context, and expose the evidence behind AI-supported claims.",
+    "neutral_summary": "The response seeks clear contract-level data connecting planned budgets, actual payments, suppliers, deadlines, and delivered results for local and EU-funded services. It supports fair common measures, such as cost per completed service, while requiring local wage levels, population density, infrastructure, taxation, and administrative capacity to remain visible. AI-derived patterns should be understandable, source-linked, uncertainty-aware, and open to challenge by public and independent reviewers, without replacing human decisions.",
+    "sensitive_data_flag": false,
+    "question_summaries": [
+      {
+        "question_id": "Q1",
+        "theme": "Clear contract-level public-spending data",
+        "summary": "Municipalities should publish planned budgets, actual payments, named suppliers, delivery dates, and measurable results in a consistent national open-data portal."
+      },
+      {
+        "question_id": "Q2",
+        "theme": "Comparable service cost with local conditions",
+        "summary": "Cost per completed service should use a common definition, while wage levels, population density, infrastructure, tax systems, and administrative capacity remain visible beside the comparison."
+      },
+      {
+        "question_id": "Q3",
+        "theme": "Understandable and contestable AI evidence",
+        "summary": "Auditors, representatives, researchers, journalists, and affected citizens should be able to inspect anonymised responses, sampling and exclusion rules, coverage, model instructions, uncertainty, and the reasoning behind a claimed pattern."
+      }
+    ]
+  }
+]

@@ -3,9 +3,10 @@
 This branch is a short public-data demonstration of DeepAsk's adaptive civic
 listening flow.
 
-It asks one neutral follow-up, creates a participant-confirmed summary, and
-turns answers into a Mind Hive group map. Six fictional responses seed the map
-and remain labelled separately from answers submitted during the demo.
+It asks one required neutral follow-up per main question and lets the participant
+choose up to two more, creates a participant-confirmed summary, and turns answers
+into a Mind Hive group map. Ten approved synthetic participant workpacks seed the
+map and remain labelled separately from answers submitted during the demo.
 
 ## Run locally
 
@@ -43,7 +44,8 @@ HF_TOKEN=your_huggingface_token_here
 HF_MODEL=openai/gpt-oss-120b:fastest
 ```
 
-If no working provider is configured, the app uses deterministic demo fallbacks so the full flow remains demoable.
+If no working provider is configured, the app uses question-specific deterministic
+fallbacks and records that provider boundary in each follow-up turn.
 
 `ORGANIZER_CODE` protects the organiser workspace and organiser read/write endpoints. Participants can still open and submit surveys without a code.
 

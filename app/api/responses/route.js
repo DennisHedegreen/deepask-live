@@ -5,7 +5,10 @@ import {
   QUESTIONNAIRE,
   SURVEY_ID
 } from "@/lib/constants";
-import { demoResponses } from "@/lib/demoData";
+import {
+  getSyntheticResponses,
+  getSyntheticResponsesForSurvey
+} from "@/lib/syntheticResponses";
 import {
   deleteSurveyParticipantData,
   getResponses,
@@ -54,10 +57,16 @@ export async function GET(request) {
   if (authError) return authError;
   const { searchParams } = new URL(request.url);
   const surveyId = searchParams.get("survey_id");
-  const responses = surveyId ? await getResponsesForSurvey(surveyId) : await getResponses();
+  const submittedResponses = surveyId
+    ? await getResponsesForSurvey(surveyId)
+    : await getResponses();
+  const syntheticResponses = surveyId
+    ? getSyntheticResponsesForSurvey(surveyId)
+    : getSyntheticResponses();
   return Response.json({
-    responses,
-    demoResponses: responses.length ? [] : demoResponses
+    responses: [...syntheticResponses, ...submittedResponses],
+    syntheticResponseCount: syntheticResponses.length,
+    submittedResponseCount: submittedResponses.length
   });
 }
 
@@ -151,6 +160,10 @@ function normaliseQuestions(input, body, survey) {
             type: String(turn.type || (turn.role === "ai" ? "followup" : "answer")),
             text: truncateText(turn.text || turn.question, LIMITS.maxAnswerChars),
             theme: turn.theme ? String(turn.theme) : undefined,
+            model_provider: turn.model_provider ? String(turn.model_provider) : undefined,
+            model_name: turn.model_name ? String(turn.model_name) : undefined,
+            should_continue:
+              typeof turn.should_continue === "boolean" ? turn.should_continue : undefined,
             created_at: turn.created_at || new Date().toISOString()
           }))
         : []

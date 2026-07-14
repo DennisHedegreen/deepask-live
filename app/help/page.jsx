@@ -36,7 +36,7 @@ export default async function HelpPage() {
             <h2>Four short steps</h2>
             <ol className="help-steps">
               <li><strong>Answer</strong> all three public-data questions.</li>
-              <li><strong>Clarify</strong> each answer with one neutral follow-up.</li>
+              <li><strong>Clarify</strong> each answer with one required follow-up and up to two optional ones.</li>
               <li><strong>Review</strong> the AI-drafted summary and edit it if needed.</li>
               <li><strong>Explore</strong> collective patterns in Mind Hive.</li>
             </ol>
@@ -45,12 +45,13 @@ export default async function HelpPage() {
           <div className="card stack">
             <h2>What is synthetic?</h2>
             <p>
-              Mind Hive begins with twelve fictional example responses so the group
+              Mind Hive begins with ten synthetic participant workpacks so the group
               view is understandable before several people have used the demo.
             </p>
             <p className="note">
-              Synthetic examples are labelled separately from answers submitted
-              during the demo. They do not represent any real participant.
+              Ten separate participant agents answered all three questions, responded
+              to follow-ups, and approved their summaries. They are labelled separately
+              and do not represent real people.
             </p>
           </div>
 
@@ -74,8 +75,8 @@ export default async function HelpPage() {
               what is correct, rank people, or make a public-policy decision.
             </p>
             <p className="note">
-              If no external AI provider is configured, the demo uses a simple
-              deterministic fallback so the flow remains testable.
+              If the external provider is unavailable, DeepAsk uses a clearly logged,
+              question-specific deterministic fallback so the flow remains testable.
             </p>
           </div>
         </section>

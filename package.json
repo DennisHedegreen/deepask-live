@@ -10,6 +10,7 @@
     "start:deepask": "npm run preflight:live && next start -p ${PORT:-3100}",
     "smoke:deepask": "node scripts/smoke-live.mjs",
     "smoke:demo-flow": "node scripts/smoke-demo-flow.mjs",
+    "verify:synthetic": "node scripts/verify-synthetic-responses.mjs",
     "package:deepask": "node scripts/package-live.mjs",
     "start": "next start",
     "lint": "next lint"

@@ -1,0 +1,1572 @@
+[
+  {
+    "response_id": "SYN-001",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Municipal decisions on rent regulation, social housing investment, and allocation would benefit most from reliable neighbourhood-level data. What is missing is timely, comparable information on actual rents, housing conditions, vacancy, household income, waiting lists, and displacement, linked at a sufficiently local level without exposing individuals.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What types of data sources or collection methods could provide the missing neighbourhood‑level information while protecting individuals' privacy?",
+            "theme": "Housing policy data needs",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Municipal tenancy records, social housing databases, anonymised tax and benefits data, building registries, and regularly sampled rent surveys could be combined using privacy-preserving linkage. Results should be published only in aggregated neighbourhood indicators, with minimum group sizes and independent disclosure-risk checks.",
+            "created_at": "2026-07-14T22:22:37.502Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Definitions, reporting periods, geographic units, tenure categories, income bands, and data-quality indicators should be standardised. However, comparisons must remain sensitive to local housing systems, informal rental markets, household structures, legal rights, tourism pressure, and differences between neighbourhoods within the same city.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which of the local factors you mentioned (e.g., informal rental markets, tourism pressure, household structures) tends to create the biggest difficulty when comparing data across regions?",
+            "theme": "Balancing standardisation and local context in cross‑regional public data",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Informal rental markets create the greatest difficulty because they are unevenly recorded and often concentrated among groups already missing from official statistics. This can make one region appear more affordable or stable simply because more housing activity remains invisible.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "AI-generated patterns should be supported by traceable source data, documented methods, uncertainty estimates, bias testing, and evidence that minority or less digitally active groups were not excluded. Public officials and relevant community representatives should review the findings, challenge misleading categories, and retain responsibility for the final decision; the AI output should never be treated as a substitute for consultation or local expertise.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What specific processes or tools would you suggest to ensure traceable data, bias testing, and accountability for AI-generated patterns?",
+            "theme": "Transparency and oversight mechanisms",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Authorities should maintain a public data lineage register, model cards, versioned analysis code, bias and subgroup performance reports, and an auditable record of human review decisions. An independent review panel should test whether the patterns change under alternative assumptions and document why officials accepted, modified, or rejected the AI output.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Neighbourhood housing evidence with privacy and accountability",
+      "barrier_or_need": "Housing decisions lack timely, comparable neighbourhood-level evidence, while informal rental activity and groups missing from official statistics can distort comparisons.",
+      "suggested_improvement": "Combine administrative records and sampled surveys through privacy-preserving linkage, publish aggregated indicators with common definitions, and require traceable, independently reviewed AI analysis.",
+      "neutral_summary": "The response calls for timely neighbourhood-level housing data that connects rents, housing conditions, incomes, waiting lists, vacancy, and displacement without exposing individuals. It supports common definitions while warning that informal rental markets and local housing systems can make comparisons misleading. AI-derived patterns should remain traceable, testable, correctable, and subject to documented human and community review.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Privacy-preserving neighbourhood housing data",
+          "summary": "Housing regulation, investment, and allocation would benefit from linked municipal, housing, tax, benefits, building, and survey data published only as disclosure-checked neighbourhood indicators."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Comparable housing measures with local context",
+          "summary": "Definitions, periods, geographic units, tenure, income bands, and quality indicators should be standardised, while local housing systems and especially under-recorded informal rental markets remain visible."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Traceable and correctable AI analysis",
+          "summary": "AI patterns should include data lineage, methods, uncertainty, bias checks, model documentation, alternative-assumption testing, and an auditable record of accountable human and community review."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response calls for timely neighbourhood-level housing data that connects rents, housing conditions, incomes, waiting lists, vacancy, and displacement without exposing individuals. It supports common definitions while warning that informal rental markets and local housing systems can make comparisons misleading. AI-derived patterns should remain traceable, testable, correctable, and subject to documented human and community review.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:00:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Municipal housing analyst",
+    "synthetic_context": "Medium-sized Southern European city; rent pressure, social housing allocation, and neighbourhood-level evidence.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-002",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Decisions about funding accessibility improvements in public services would benefit most from better public data. What is missing is consistent, disaggregated evidence on whether disabled people can actually complete essential tasks online and in person, including failed attempts, waiting times, inaccessible procedures, and the availability of human alternatives.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What specific challenges have you faced in obtaining the disaggregated evidence you described?",
+            "theme": "Data needs for accessibility decisions",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Public bodies often group all disabled people together, do not record failed service attempts or forced switching between digital and in-person channels, and store relevant data across disconnected municipal and national systems. Requests are also frequently answered with inaccessible documents or incomplete datasets.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Countries should standardise definitions, accessibility indicators, collection methods, metadata, and reporting of missing data so comparisons are meaningful. However, interpretation must remain sensitive to different legal systems, service structures, languages, infrastructure, and disability communities; a common score should not erase local barriers or lived experience.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which of those areas—definitions, indicators, collection methods, metadata, or reporting—do you see as the biggest challenge when trying to balance standardisation and local context?",
+            "theme": "Balancing standardisation with local context in public data comparisons",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Collection methods are the biggest challenge. A uniform online survey may appear comparable while excluding people who need assistance, alternative formats, or offline participation, so Europe needs a common evidence core with locally appropriate accessible ways to contribute.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 2,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "AI-generated patterns should only be used when the source data, sampling limits, processing steps, model assumptions, and uncertainty are publicly documented and independently auditable. Findings should be checked against raw responses, tested for underrepresentation and discriminatory bias, and validated through accessible consultation with affected communities. Accountable public officials—not the AI system—must make and explain the final decision, with a clear route for challenge and correction.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What challenges do you anticipate in making the documentation and independent audits of AI-generated patterns accessible and understandable to the public?",
+            "theme": "Transparency and accountability mechanisms",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Audit documentation can be technically dense, published in inaccessible PDFs, or limited by procurement secrecy, while simplified public summaries may hide important uncertainty. Producing layered, accessible explanations that affected communities can test—not merely read—will require resources and genuine co-design.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What should happen when reviewers find missing groups, weak evidence, or a misleading pattern?",
+            "theme": "Public procurement",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:22:46.458Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The pattern should be withdrawn from the decision process until the gap is publicly documented, missing groups are meaningfully included, and the analysis is rerun and independently reviewed. If the weakness cannot be corrected, officials must exclude the finding rather than merely attach a disclaimer, and affected communities should be able to challenge that judgment.",
+            "created_at": "2026-07-14T22:23:52.367Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Accessible public-service evidence and inclusive oversight",
+      "barrier_or_need": "Public bodies often lack disaggregated evidence about failed service attempts and channel switching, while inaccessible collection and publication methods can exclude the people whose access is being assessed.",
+      "suggested_improvement": "Use a common evidence core with locally accessible participation methods, publish layered and testable explanations, and withdraw weak AI patterns until missing groups and evidence gaps are addressed.",
+      "neutral_summary": "The response seeks disaggregated evidence about whether people can complete essential public-service tasks online and in person, including failures, waits, inaccessible procedures, and human alternatives. It argues that comparable indicators must be collected through accessible local methods rather than a single uniform channel. AI patterns should be independently auditable and co-reviewed by affected communities, with misleading or weak findings removed from decisions until corrected.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Evidence of real service accessibility",
+          "summary": "Accessibility funding needs disaggregated evidence on successful and failed service use across digital and in-person channels, rather than broad categories and disconnected or inaccessible datasets."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Accessible collection across local contexts",
+          "summary": "Definitions, indicators, metadata, missing-data reporting, and core evidence should be comparable, but collection must support locally appropriate assistance, formats, languages, and offline participation."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Auditable AI with meaningful community challenge",
+          "summary": "Documentation should be accessible as well as technically complete, and patterns with missing groups, weak evidence, or misleading conclusions should be withdrawn and rerun before influencing a decision."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response seeks disaggregated evidence about whether people can complete essential public-service tasks online and in person, including failures, waits, inaccessible procedures, and human alternatives. It argues that comparable indicators must be collected through accessible local methods rather than a single uniform channel. AI patterns should be independently auditable and co-reviewed by affected communities, with misleading or weak findings removed from decisions until corrected.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:01:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Disability-rights advocate",
+    "synthetic_context": "Italy; access to digital and in-person public services.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-003",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Regional transport funding would benefit most, especially decisions about bus and rail links connecting rural communities to jobs, hospitals, and schools. What is missing is reliable, route-level data on cancellations, actual travel times, passenger needs, and the people who cannot travel because no suitable service exists.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What specific obstacles make it difficult to obtain reliable route‑level data on cancellations, travel times, and passenger needs?",
+            "theme": "Data gaps in regional transport",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Small operators often use different reporting systems, while cancellations may be recorded internally but never published in a usable format. Passenger surveys also miss people who have stopped travelling because the service is too unreliable.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Definitions, collection periods, geographic units, service-frequency measures, and accessibility indicators should be standardised. Local context must remain visible, including settlement patterns, cross-border travel, seasonal work, road conditions, and whether one missed connection makes an entire journey impossible.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Could you give an example of a specific indicator where local context makes standardisation difficult?",
+            "theme": "Standardisation vs local context in public data comparison",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Access to a hospital within 60 minutes is difficult to standardise because a route that appears available may involve an unreliable connection, a long walk, or no return service after an appointment.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "The original data sources, sampling methods, known gaps, model instructions, and uncertainty should be publicly documented. Independent reviewers and affected communities should be able to challenge the patterns, and accountable public officials—not the AI—must decide whether the evidence is strong enough to influence policy.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What kind of process would you envision for independent reviewers and affected communities to challenge AI-generated patterns?",
+            "theme": "Transparency and oversight",
+            "should_continue": true,
+            "model_provider": "huggingface",
+            "model_name": "openai/gpt-oss-120b:fastest",
+            "created_at": "2026-07-14T22:12:10.254Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The authority should publish the pattern, source data, methodology, and uncertainties, then allow independent experts and local groups to submit corrections or objections during a defined review period. Responses should be publicly logged, and unresolved disputes should be presented to accountable officials before any decision.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Reliable rural mobility evidence with public challenge",
+      "barrier_or_need": "Published transport data can omit cancellations, failed connections, and people who no longer travel, making nominal service availability a poor measure of practical access.",
+      "suggested_improvement": "Standardise route reliability and accessibility measures while retaining journey-specific local context, and publish AI-supported conclusions through an open correction and objection process.",
+      "neutral_summary": "The response prioritises route-level evidence for rural transport funding, including cancellations, actual travel times, passenger needs, and unmet journeys. It supports common service and accessibility measures but says local settlement patterns, road conditions, and connection constraints must remain visible. Any AI-derived pattern should be published with its sources, method, uncertainty, and a documented process for expert and community challenge before officials act on it.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Rural transport reliability and unmet journeys",
+          "summary": "Regional funding needs usable data from operators on cancellations and actual journeys, alongside evidence from people whose lack of a reliable service prevents them from travelling."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Standard access indicators with journey context",
+          "summary": "Definitions, periods, geography, frequency, and accessibility should be standardised, but indicators must show whether connections, walking distances, and return services make a journey workable."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Open review of AI-supported transport patterns",
+          "summary": "Authorities should disclose data, methods, gaps, instructions, and uncertainty, allow corrections and objections during a defined review period, and log unresolved disputes for accountable officials."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response prioritises route-level evidence for rural transport funding, including cancellations, actual travel times, passenger needs, and unmet journeys. It supports common service and accessibility measures but says local settlement patterns, road conditions, and connection constraints must remain visible. Any AI-derived pattern should be published with its sources, method, uncertainty, and a documented process for expert and community challenge before officials act on it.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:02:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Rural mobility organiser",
+    "synthetic_context": "Eastern Poland; access to jobs, hospitals, schools, and reliable transport.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-004",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Public procurement decisions for major infrastructure projects would benefit most, especially when contracts are repeatedly amended after award. What is missing is timely, machine-readable data linking tenders, beneficial owners, subcontractors, cost revisions, completion delays, and political or administrative responsibility.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which missing dataset or measure would most improve the public procurement decision, and who should publish it?",
+            "theme": "Public procurement",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "A contract-level change log linking the original award to every amendment, payment, subcontractor, delay, and cost overrun would make the greatest difference. It should be published continuously by each contracting authority through a national procurement platform using common identifiers.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Countries should standardise core definitions, reporting periods, procurement identifiers, spending categories, and quality metadata so comparisons are meaningful. Local legal frameworks, purchasing power, geography, administrative capacity, and the social purpose of spending must remain visible, because identical figures can reflect very different realities.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which shared definition or indicator should be standardised first, and which local difference must always be shown beside it?",
+            "theme": "Public procurement",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The first standard should be the final cost compared with the original awarded value, calculated consistently across jurisdictions. Beside it, authorities must always show locally specific causes such as inflation, geological conditions, legal appeals, or changes in project scope.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "AI-generated patterns should be supported by accessible source data, documented methods, uncertainty estimates, bias testing, and reproducible audits by independent experts. Officials must disclose how the analysis influenced the decision, while accountable humans retain authority to challenge, contextualise, or reject the model’s conclusions.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Who should be able to inspect or challenge an AI-derived pattern, and what underlying evidence should they see?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Journalists, civil society groups, affected communities, auditors, opposition representatives, and the responding public should be able to inspect and challenge the pattern. They should see the anonymised source responses, inclusion and exclusion rules, model and prompt documentation, uncertainty measures, subgroup results, and a traceable explanation of how the conclusion was produced.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Connected procurement records and inspectable AI analysis",
+      "barrier_or_need": "Procurement records do not consistently connect awards, amendments, payments, subcontractors, delays, cost overruns, and responsibility, which limits scrutiny of changing infrastructure contracts.",
+      "suggested_improvement": "Publish continuous contract-level change logs with common identifiers and comparable cost measures, preserve explanations of local cost changes, and expose the evidence and reasoning behind AI-supported conclusions.",
+      "neutral_summary": "The response calls for machine-readable procurement data that links an infrastructure contract from its original award through amendments, payments, subcontracting, delays, and final costs. It favours consistent comparison of final and awarded values while retaining locally specific explanations for changes. AI-derived patterns should be reproducible and open to challenge by public and independent reviewers, with accountable officials explaining how the analysis affected a decision.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Contract-level procurement change logs",
+          "summary": "Each contracting authority should continuously publish a common-identifier record linking the original award to amendments, payments, subcontractors, delays, overruns, and administrative responsibility."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Comparable contract costs with local explanations",
+          "summary": "Final cost relative to the awarded value should be calculated consistently, while inflation, geology, legal appeals, project scope, purchasing power, and administrative context remain visible."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Publicly inspectable procurement analysis",
+          "summary": "Reviewers should be able to examine anonymised responses, inclusion rules, model and prompt documentation, uncertainty, subgroup results, and the traceable reasoning that produced an AI-supported pattern."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response calls for machine-readable procurement data that links an infrastructure contract from its original award through amendments, payments, subcontracting, delays, and final costs. It favours consistent comparison of final and awarded values while retaining locally specific explanations for changes. AI-derived patterns should be reproducible and open to challenge by public and independent reviewers, with accountable officials explaining how the analysis affected a decision.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:03:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Investigative procurement journalist",
+    "synthetic_context": "Greece; infrastructure spending, contract changes, and public accountability.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-005",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Allocation of climate-adaptation funding would benefit most, especially for flood protection, heat resilience, and critical infrastructure. What is missing is comparable, neighbourhood-level data combining physical hazards, infrastructure dependencies, social vulnerability, and actual investment outcomes.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which missing dataset or measure would most improve the climate adaptation decision, and who should publish it?",
+            "theme": "Climate adaptation",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "A neighbourhood-level adaptation-gap dataset would help most, combining projected flood and heat exposure, critical-infrastructure vulnerability, social vulnerability, and committed public investment. National statistical offices should coordinate publication, with municipalities, water authorities, and infrastructure operators supplying regularly updated data.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Hazard definitions, emissions scenarios, time horizons, vulnerability indicators, geographic resolution, and reporting methods should be standardised. However, interpretation must remain sensitive to local geography, infrastructure, housing conditions, institutional capacity, and community priorities.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which shared definition or indicator should be standardised first, and which local difference must always be shown beside it?",
+            "theme": "Housing",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The first standard should be a common measure of expected annual harm under agreed climate scenarios, covering people, essential services, and economic loss. It must always be shown beside local factors such as elevation, housing quality, drainage capacity, and residents’ ability to recover.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "AI-generated patterns should be supported by representative and traceable source data, published methods, uncertainty ranges, bias testing, and an accessible explanation of how findings affected the decision. Independent experts and affected communities should review the results, while accountable public officials retain final authority and provide a clear appeal or correction process.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Who should be able to inspect or challenge an AI-derived pattern, and what underlying evidence should they see?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Independent researchers, auditors, civil-society organisations, affected communities, and elected representatives should be able to inspect and challenge the pattern. They should see the source responses, sampling and weighting methods, exclusions, model and prompt documentation, uncertainty estimates, bias tests, and an audit trail linking the pattern to the proposed decision.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Comparable and locally grounded climate-adaptation evidence",
+      "barrier_or_need": "Climate-adaptation funding lacks integrated neighbourhood evidence linking hazards, infrastructure dependencies, social vulnerability, and investment outcomes.",
+      "suggested_improvement": "Create a regularly updated adaptation-gap dataset using common hazard and harm measures alongside local recovery conditions, with traceable evidence, independent review, and accountable appeal routes.",
+      "neutral_summary": "The response supports neighbourhood-level evidence to guide funding for flood protection, heat resilience, and critical infrastructure. It proposes shared hazard scenarios and expected-harm measures while keeping local geography, housing, infrastructure, institutional capacity, and recovery conditions visible. AI-supported patterns should be traceable, uncertainty-aware, independently reviewable, and open to challenge by affected communities before accountable officials decide.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Neighbourhood adaptation-gap data",
+          "summary": "National coordination should combine local hazard exposure, critical-infrastructure vulnerability, social vulnerability, and committed investment into a regularly updated neighbourhood-level dataset."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Common climate-harm measures with local resilience context",
+          "summary": "Climate scenarios, time horizons, hazard and vulnerability measures, and reporting should be comparable, while elevation, housing, drainage, infrastructure, and residents' ability to recover remain visible."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Challengeable climate-risk patterns",
+          "summary": "Independent and affected reviewers should see source responses, sampling and weighting, exclusions, prompts, uncertainty, bias tests, and the audit trail connecting a pattern to a proposed funding decision."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response supports neighbourhood-level evidence to guide funding for flood protection, heat resilience, and critical infrastructure. It proposes shared hazard scenarios and expected-harm measures while keeping local geography, housing, infrastructure, institutional capacity, and recovery conditions visible. AI-supported patterns should be traceable, uncertainty-aware, independently reviewable, and open to challenge by affected communities before accountable officials decide.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:04:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Climate-adaptation planner",
+    "synthetic_context": "Netherlands; flood risk, heat, critical infrastructure, and fair adaptation funding.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-006",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 2,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Decisions about how healthcare capacity is distributed—especially specialist services, mental health care, and preventive programmes—would benefit most. We lack timely, comparable data on actual waiting times, unmet need, socioeconomic barriers, and patient outcomes, with privacy-preserving detail for small populations.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which missing dataset or measure would most improve the healthcare access decision, and who should publish it?",
+            "theme": "Healthcare access",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "A patient-level referral-to-treatment dataset, linked to cancellations, non-attendance, socioeconomic position, and outcomes, would most improve the decision. It should be published in privacy-preserving form by the Danish Health Data Authority, with regional validation.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "How should the healthcare access evidence be updated or checked so decision-makers can rely on it?",
+            "theme": "Healthcare access",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:22:46.458Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The evidence should be updated at least quarterly, with consistent historical revisions, automated quality checks, and periodic audits against hospital and patient records. Decision-makers should also see completeness, uncertainty, regional comparability, and any changes in definitions or reporting practices.",
+            "created_at": "2026-07-14T22:23:52.367Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Definitions, time periods, demographic categories, outcome measures, and methods for reporting missing data should be standardised. Interpretation must remain sensitive to differences in healthcare systems, geography, population size, referral practices, and local inequalities.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which shared definition or indicator should be standardised first, and which local difference must always be shown beside it?",
+            "theme": "Healthcare access",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The first standardised indicator should be the median and 90th-percentile time from clinically accepted referral to completed treatment. It must always be shown beside local service availability and travel distance, because equal waiting times do not necessarily mean equal access.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 2,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "The underlying responses, sampling method, limitations, and model workflow should be documented, with independent checks for bias, robustness, and privacy risks. AI-generated patterns should be treated as hypotheses, not findings, and reviewed by domain experts, affected communities, and accountable public officials before influencing a decision.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Who should be able to inspect or challenge an AI-derived pattern, and what underlying evidence should they see?",
+            "theme": "That evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Independent researchers, clinicians, civil-society groups, affected communities, data-protection authorities, and elected decision-makers should be able to inspect or challenge the pattern. They should see the sampling and response data at a safe level of detail, subgroup coverage, missingness, analysis code, model and prompt documentation, uncertainty estimates, and records of human validation without exposing small populations.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "What should happen when reviewers find missing groups, weak evidence, or a misleading pattern?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:22:46.458Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The pattern should be withheld from decision-making, clearly flagged, and reanalysed after improving representation or collecting stronger evidence. If the weakness cannot be corrected, reviewers should document it publicly and require decision-makers to rely on other evidence.",
+            "created_at": "2026-07-14T22:23:52.367Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Equitable healthcare access evidence with privacy safeguards",
+      "barrier_or_need": "Healthcare planning lacks timely and comparable evidence on referral-to-treatment time, unmet need, access barriers, outcomes, and small-population coverage.",
+      "suggested_improvement": "Publish privacy-preserving linked access data with regular quality checks and contextual indicators, and treat AI patterns as hypotheses that require independent, community, and accountable official review.",
+      "neutral_summary": "The response calls for privacy-preserving healthcare data that connects accepted referrals, treatment, cancellations, non-attendance, socioeconomic position, and outcomes. It supports common waiting-time measures but says service availability, travel distance, system design, and local inequality must accompany comparisons. AI-derived patterns should be treated as hypotheses and withheld from decisions when representation, evidence quality, robustness, or privacy cannot be adequately demonstrated.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Linked referral-to-treatment evidence",
+          "summary": "Healthcare capacity decisions need a privacy-preserving referral-to-treatment dataset linked to cancellations, non-attendance, socioeconomic position, and outcomes, updated regularly and checked for completeness and comparability."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Comparable waiting times with access context",
+          "summary": "Median and 90th-percentile time from accepted referral to completed treatment should be standardised, while local service availability, travel distance, referral practices, and inequalities remain visible."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Hypothesis-based AI review with safe evidence access",
+          "summary": "Reviewers should have privacy-safe access to sampling, subgroup coverage, missingness, code, model and prompt records, uncertainty, and validation, and weak patterns should be withheld and reanalysed."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response calls for privacy-preserving healthcare data that connects accepted referrals, treatment, cancellations, non-attendance, socioeconomic position, and outcomes. It supports common waiting-time measures but says service availability, travel distance, system design, and local inequality must accompany comparisons. AI-derived patterns should be treated as hypotheses and withheld from decisions when representation, evidence quality, robustness, or privacy cannot be adequately demonstrated.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:05:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Public-health researcher",
+    "synthetic_context": "Denmark; waiting times, unequal access, prevention, and small-population privacy.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-007",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Decisions on funding and governing regional labour-market transitions would benefit most, especially where decarbonisation and automation may displace workers. What is missing is timely, linked data on occupations, skills, wages, contract quality, training outcomes, and worker participation, broken down by region and demographic group.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which missing dataset or measure would most improve the labour-market transition decision, and who should publish it?",
+            "theme": "Labour-market transition",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "A regional worker-transition dataset linking job losses, new vacancies, retraining participation, post-training employment, wages, contract type, and collective-agreement coverage would be most valuable. National statistical offices should publish it using harmonised EU guidance and administrative data from employment agencies and social insurance systems.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Definitions, classifications, time periods, sampling methods, and measures of pay, employment status, working time, and job quality should be standardised. However, comparisons must preserve local context such as collective-bargaining systems, living costs, industrial structure, welfare institutions, and the legal meaning of employment categories.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which shared definition or indicator should be standardised first, and which local difference must always be shown beside it?",
+            "theme": "Labour-market transition",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The first standardised indicator should be the share of displaced workers who enter sustained, good-quality employment within twelve months. It must always be shown beside regional living costs and collective-bargaining coverage, because the same wage or contract can represent very different job quality locally.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "AI-generated patterns should be traceable to documented, representative data, with published methods, uncertainty estimates, bias tests, and clear limits on what can be inferred. Independent experts and representatives of affected workers should review the analysis, while accountable public officials retain decision authority and provide routes for challenge and correction.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Who should be able to inspect or challenge an AI-derived pattern, and what underlying evidence should they see?",
+            "theme": "Labour-market transition",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Trade unions, affected workers, independent researchers, civil-society organisations, auditors, and elected oversight bodies should be able to inspect and challenge the pattern. They should see the source data and sampling limits, coding rules, model documentation, uncertainty, subgroup results, bias tests, and an audit trail showing how human judgments shaped the result.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Worker-centred evidence for labour-market transitions",
+      "barrier_or_need": "Regional transition decisions lack linked evidence connecting displacement, retraining, subsequent employment, wages, contract quality, and worker participation.",
+      "suggested_improvement": "Publish harmonised regional transition outcomes alongside local job-quality context, and require transparent AI analysis that affected workers and their representatives can inspect and challenge.",
+      "neutral_summary": "The response seeks linked regional data to assess how decarbonisation and automation affect job loss, retraining, employment outcomes, wages, contracts, and collective-agreement coverage. It supports a common measure of sustained good-quality employment while preserving differences in living costs, bargaining systems, industrial structure, and employment law. AI-derived patterns should remain traceable, bias-tested, limited in their claims, and subject to review by affected workers, independent experts, and accountable officials.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Regional worker-transition outcomes",
+          "summary": "A harmonised dataset should link job losses, vacancies, retraining participation, post-training employment, wages, contract type, and collective-agreement coverage by region and demographic group."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Comparable employment outcomes with local job quality",
+          "summary": "The share of displaced workers entering sustained good-quality work within twelve months should be comparable, with regional living costs and bargaining coverage shown beside it."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Worker-reviewable AI patterns",
+          "summary": "Affected workers, trade unions, researchers, civil society, auditors, and elected bodies should be able to inspect source limits, coding, model documentation, uncertainty, subgroup results, bias tests, and human judgments."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response seeks linked regional data to assess how decarbonisation and automation affect job loss, retraining, employment outcomes, wages, contracts, and collective-agreement coverage. It supports a common measure of sustained good-quality employment while preserving differences in living costs, bargaining systems, industrial structure, and employment law. AI-derived patterns should remain traceable, bias-tested, limited in their claims, and subject to review by affected workers, independent experts, and accountable officials.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:06:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Trade-union data specialist",
+    "synthetic_context": "Germany; labour-market transitions, skills, job quality, and worker voice.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-008",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Decisions about access to housing, residency support, and essential social services would benefit greatly from reliable public data. What is missing is joined-up, multilingual information showing eligibility, waiting times, refusal reasons, and successful appeals, broken down by location and administrative status without exposing individuals.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which missing dataset or measure would most improve the housing decision, and who should publish it?",
+            "theme": "Housing",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "A multilingual dataset tracking social-housing applications from submission to decision—including waiting time, refusal reason, appeal, and final outcome—would improve decisions most. Local housing authorities should publish it in a standard format, coordinated by the national government.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Definitions, reporting periods, service outcomes, and demographic categories should be standardised enough to make comparisons meaningful. However, interpretation must remain sensitive to differences in law, migration systems, language access, local service capacity, and the fact that some groups may avoid public institutions because of fear or previous discrimination.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which shared definition or indicator should be standardised first, and which local difference must always be shown beside it?",
+            "theme": "Access to public services",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The definition of housing waiting time should be standardised first, measured from a complete application to an actual housing offer or final decision. It must always be shown beside local eligibility rules and the availability of suitable housing.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Authorities should publish the source data, sampling gaps, methodology, uncertainty, and known biases, including which languages or communities were underrepresented. AI-generated patterns should be checked against anonymised responses, reviewed by independent experts and representatives of affected communities, and never treated as evidence on their own. A named public official should remain responsible for the decision, with a clear process for challenge, correction, and appeal.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Who should be able to inspect or challenge an AI-derived pattern, and what underlying evidence should they see?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Independent auditors, affected residents, migrant-support organisations, journalists, and elected representatives should be able to inspect or challenge the pattern. They should see anonymised source responses, language coverage, sampling gaps, model instructions, uncertainty, and examples of how the pattern was produced.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Multilingual service-access evidence with representation safeguards",
+      "barrier_or_need": "Housing and social-service data are fragmented and may omit language coverage, refusal and appeal outcomes, and groups who avoid institutions because of fear or prior discrimination.",
+      "suggested_improvement": "Publish standard multilingual application-to-outcome data with local eligibility and capacity context, and require AI analysis to disclose underrepresentation and support public challenge and appeal.",
+      "neutral_summary": "The response calls for joined-up multilingual evidence on access to housing, residency support, and essential services, including eligibility, waits, refusals, appeals, and final outcomes. It supports common definitions such as housing waiting time while retaining local law, eligibility rules, service capacity, language access, and institutional avoidance. AI patterns should disclose missing languages and communities, be checked against anonymised evidence, and remain subject to independent review, correction, appeal, and named official responsibility.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Multilingual housing application outcomes",
+          "summary": "Local authorities should publish standard multilingual data following social-housing applications from complete submission through waiting, refusal, appeal, offer, and final outcome without exposing individuals."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Common waiting-time definitions with local access context",
+          "summary": "Housing waiting time should run from a complete application to an offer or final decision, with local eligibility, housing availability, language access, law, and service capacity shown alongside it."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Transparent AI with language and sampling coverage",
+          "summary": "Reviewers should see anonymised responses, language coverage, sampling gaps, model instructions, uncertainty, and examples of pattern formation, with clear routes for correction, challenge, and appeal."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response calls for joined-up multilingual evidence on access to housing, residency support, and essential services, including eligibility, waits, refusals, appeals, and final outcomes. It supports common definitions such as housing waiting time while retaining local law, eligibility rules, service capacity, language access, and institutional avoidance. AI patterns should disclose missing languages and communities, be checked against anonymised evidence, and remain subject to independent review, correction, appeal, and named official responsibility.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:07:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Multilingual public-service volunteer",
+    "synthetic_context": "France; migrants, language access, and administrative navigation.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-009",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 2,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Decisions about allocating climate-adaptation funding would benefit greatly from better public data. What is missing is interoperable, regularly updated local data on flood, heat, infrastructure, demographics, and actual spending, with clear provenance and stable APIs. Without that, funding tends to follow political visibility rather than reproducible assessments of risk and vulnerability.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which missing dataset or measure would most improve the climate adaptation decision, and who should publish it?",
+            "theme": "Climate adaptation",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "A harmonised, parcel- or neighbourhood-level climate-risk and vulnerability dataset would improve adaptation funding most, combining hazard exposure, critical infrastructure, population vulnerability, and completed adaptation measures. National environmental agencies should publish it through stable APIs, using municipal source data and a shared European schema.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "How should the climate adaptation evidence be updated or checked so decision-makers can rely on it?",
+            "theme": "Climate adaptation",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:22:46.458Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Source agencies should publish versioned updates on a fixed schedule, with machine-readable provenance, validation rules, and a public change log. Independent audits and municipal checks should verify high-impact changes, while automated quality tests flag stale, inconsistent, or unusually revised records.",
+            "created_at": "2026-07-14T22:23:52.367Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 2,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Definitions, units, time periods, geographic identifiers, metadata, licensing, and data-quality indicators should be standardised. The comparison method should also expose missing values and revisions instead of hiding them in a single ranking. Local legal frameworks, service models, demographic conditions, and the reasons behind an indicator must remain visible so standardisation does not erase context.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which shared definition or indicator should be standardised first, and which local difference must always be shown beside it?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "The first standardised indicator should be population exposed to a specified climate hazard, with common thresholds, spatial resolution, and reference periods. It must always be shown beside local building standards, protective infrastructure, and demographic vulnerability, because equal exposure does not mean equal risk.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "How should a comparison display missing data and local exceptions without hiding them inside one ranking?",
+            "theme": "Climate adaptation",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:22:46.458Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Comparisons should show an indicator dashboard with confidence, coverage, missingness, and local exception notes beside each result, rather than collapsing everything into one score. Any ranking should be optional and filterable, with incomplete cases clearly marked and no automatic penalty for data that is unavailable.",
+            "created_at": "2026-07-14T22:23:52.368Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "The underlying response data, sampling method, cleaning steps, model version, prompts, uncertainty, and known limitations should be documented sufficiently for an independent team to reproduce the analysis. Privacy safeguards and bias tests should be mandatory, with public access to aggregated evidence and an audit trail linking every claimed pattern back to source material. A diverse human review panel must be able to challenge, reject, or narrow the AI findings, and the final decision-maker should remain publicly accountable.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Who should be able to inspect or challenge an AI-derived pattern, and what underlying evidence should they see?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Independent researchers, civil-society organisations, affected communities, data-protection authorities, and public auditors should be able to inspect and challenge the pattern. They should see representative source excerpts or privacy-preserving records, sampling and exclusion rules, provenance, transformations, model and prompt versions, uncertainty measures, and evidence of contradictory responses.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Interoperable climate data and reproducible public analysis",
+      "barrier_or_need": "Climate-adaptation decisions are hindered by fragmented, stale, and poorly documented local datasets and comparisons that hide missing values, revisions, and local exceptions.",
+      "suggested_improvement": "Publish versioned climate-risk and vulnerability data through stable APIs and a shared schema, show coverage and local context beside comparisons, and make AI analysis reproducible and publicly challengeable.",
+      "neutral_summary": "The response supports interoperable and regularly updated local data to make climate-adaptation funding reproducible rather than dependent on visibility. It proposes common climate-exposure measures and data standards, accompanied by provenance, missingness, uncertainty, revisions, and local vulnerability and infrastructure context. AI-derived patterns should link back to privacy-preserving source evidence and be reproducible, bias-tested, and open to challenge by independent and affected reviewers.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Versioned climate-risk data through stable APIs",
+          "summary": "Environmental agencies should publish harmonised local climate-risk and vulnerability data with provenance, scheduled updates, validation rules, change logs, municipal checks, and independent audits."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Transparent comparisons without one opaque ranking",
+          "summary": "Definitions, units, geography, metadata, licensing, and quality indicators should be common, while dashboards show confidence, coverage, missingness, revisions, local exceptions, infrastructure, and demographic vulnerability."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Reproducible and challengeable AI analysis",
+          "summary": "Independent reviewers should be able to inspect privacy-safe evidence, sampling and exclusion rules, provenance, transformations, model and prompt versions, uncertainty, contradictory responses, and the human audit trail."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response supports interoperable and regularly updated local data to make climate-adaptation funding reproducible rather than dependent on visibility. It proposes common climate-exposure measures and data standards, accompanied by provenance, missingness, uncertainty, revisions, and local vulnerability and infrastructure context. AI-derived patterns should link back to privacy-preserving source evidence and be reproducible, bias-tested, and open to challenge by independent and affected reviewers.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:08:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Open-data engineer",
+    "synthetic_context": "Estonia; interoperability, provenance, APIs, privacy, and reproducibility.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  },
+  {
+    "response_id": "SYN-010",
+    "survey_id": "public-data-possibilities",
+    "questionnaire": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?"
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?"
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?"
+      }
+    ],
+    "questions": [
+      {
+        "question_id": "Q1",
+        "question": "Which public decision in Europe would benefit most from better access to reliable public data, and what is currently missing?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Decisions about how municipal and EU funds are spent on local services would benefit most. Citizens and small businesses need clear, timely data showing the original budget, actual spending, contractors, delivery dates, and measurable results—not scattered documents that are hard to understand.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which missing dataset or measure would most improve the public spending decision, and who should publish it?",
+            "theme": "Public spending",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "A contract-level dataset linking planned budgets, actual payments, named suppliers, deadlines, and delivered results would improve the decision most. Municipalities should publish it through a consistent national open-data portal.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q2",
+        "question": "When public data is compared across countries or regions, what should be standardised—and what must remain sensitive to local context?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Definitions, measurement periods, units, data quality rules, and reporting formats should be standardised so comparisons are fair. But differences in local wages, population density, infrastructure, tax systems, and administrative capacity must remain visible rather than being flattened into a single ranking.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Which shared definition or indicator should be standardised first, and which local difference must always be shown beside it?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Cost per completed service delivered should be standardised first, with the same rules for what counts as completed. Local wage levels and population density must always appear beside it.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      },
+      {
+        "question_id": "Q3",
+        "question": "What evidence, transparency, and human oversight should be required before AI-generated patterns from public responses can inform a public decision?",
+        "status": "completed",
+        "followup_count": 1,
+        "turns": [
+          {
+            "role": "participant",
+            "type": "initial_answer",
+            "text": "Authorities should publish the source data, collection methods, model limitations, uncertainty, and examples of how conclusions were produced. Independent reviewers and accountable public officials must check for bias, manipulation, and missing groups, and AI findings should never replace direct evidence or the final human decision.",
+            "created_at": "2026-07-15T00:00:00.000Z"
+          },
+          {
+            "role": "ai",
+            "type": "followup",
+            "text": "Who should be able to inspect or challenge an AI-derived pattern, and what underlying evidence should they see?",
+            "theme": "The proposed public-data evidence",
+            "should_continue": true,
+            "model_provider": "local-fallback",
+            "model_name": "deepask-contextual-fallback-v1",
+            "created_at": "2026-07-14T22:17:15.878Z"
+          },
+          {
+            "role": "participant",
+            "type": "followup_answer",
+            "text": "Public auditors, elected representatives, independent researchers, journalists, and affected citizens should be able to inspect or challenge the pattern. They should see anonymised source responses, sampling and exclusion rules, demographic coverage, model instructions, uncertainty, and the reasoning connecting the evidence to the claimed pattern.",
+            "created_at": "2026-07-14T22:22:37.503Z"
+          }
+        ]
+      }
+    ],
+    "ai_summary_draft": {
+      "main_theme": "Understandable public-spending evidence with accountable oversight",
+      "barrier_or_need": "Local spending evidence is scattered and difficult to interpret, and simple cross-region rankings can hide differences in wages, density, infrastructure, tax systems, and administrative capacity.",
+      "suggested_improvement": "Publish contract-level budget, payment, supplier, deadline, and delivery data through a consistent portal, pair common efficiency measures with local context, and expose the evidence behind AI-supported claims.",
+      "neutral_summary": "The response seeks clear contract-level data connecting planned budgets, actual payments, suppliers, deadlines, and delivered results for local and EU-funded services. It supports fair common measures, such as cost per completed service, while requiring local wage levels, population density, infrastructure, taxation, and administrative capacity to remain visible. AI-derived patterns should be understandable, source-linked, uncertainty-aware, and open to challenge by public and independent reviewers, without replacing human decisions.",
+      "sensitive_data_flag": false,
+      "question_summaries": [
+        {
+          "question_id": "Q1",
+          "theme": "Clear contract-level public-spending data",
+          "summary": "Municipalities should publish planned budgets, actual payments, named suppliers, delivery dates, and measurable results in a consistent national open-data portal."
+        },
+        {
+          "question_id": "Q2",
+          "theme": "Comparable service cost with local conditions",
+          "summary": "Cost per completed service should use a common definition, while wage levels, population density, infrastructure, tax systems, and administrative capacity remain visible beside the comparison."
+        },
+        {
+          "question_id": "Q3",
+          "theme": "Understandable and contestable AI evidence",
+          "summary": "Auditors, representatives, researchers, journalists, and affected citizens should be able to inspect anonymised responses, sampling and exclusion rules, coverage, model instructions, uncertainty, and the reasoning behind a claimed pattern."
+        }
+      ],
+      "model_provider": "synthetic-agent-run",
+      "model_name": "independent-neutral-summary-agent"
+    },
+    "citizen_confirmed_summary": true,
+    "citizen_edited_summary": null,
+    "final_summary": "The response seeks clear contract-level data connecting planned budgets, actual payments, suppliers, deadlines, and delivered results for local and EU-funded services. It supports fair common measures, such as cost per completed service, while requiring local wage levels, population density, infrastructure, taxation, and administrative capacity to remain visible. AI-derived patterns should be understandable, source-linked, uncertainty-aware, and open to challenge by public and independent reviewers, without replacing human decisions.",
+    "prompt_version": "synthetic-agent-interview-v1",
+    "model_provider": "synthetic-agent-run",
+    "model_name": "independent-neutral-summary-agent",
+    "created_at": "2026-07-15T00:09:00.000Z",
+    "synthetic": true,
+    "response_origin": "synthetic",
+    "synthetic_persona": "Small-business owner and sceptical citizen",
+    "synthetic_context": "Portugal; local services, tax spending, administrative burden, and understandable evidence.",
+    "synthetic_batch_id": "public-data-subagents-2026-07-15",
+    "summary_confirmation": "approved-by-originating-participant-agent"
+  }
+]
