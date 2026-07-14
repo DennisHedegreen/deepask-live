@@ -749,56 +749,22 @@ select:focus {
   background: linear-gradient(90deg, var(--accent), var(--gold));
 }
 
-.ice-cream-progress {
+.statement-progress {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
-.ice-cream-stage {
-  display: grid;
-  grid-template-columns: minmax(94px, 124px) 1fr;
-  gap: 16px;
-  align-items: center;
-  min-height: 88px;
-  border: 1px solid rgba(194, 147, 61, 0.24);
-  border-radius: 8px;
-  padding: 10px 12px;
-  background:
-    linear-gradient(90deg, rgba(255, 247, 232, 0.9), rgba(234, 245, 239, 0.58));
-}
-
-.ice-cream-sprite {
-  display: block;
-  width: 92px;
-  aspect-ratio: 1 / 1;
-  background-repeat: no-repeat;
-  background-size: 600% 100%;
-  background-position: var(--ice-position, 0%) center;
-  filter: drop-shadow(0 8px 14px rgba(24, 32, 38, 0.16));
-  transform: translateY(-2px);
-}
-
-.ice-cream-bites {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 6px;
-  align-items: center;
-}
-
-.ice-cream-bites span {
-  height: 10px;
-  border-radius: 999px;
-  background: #e6e1d4;
-}
-
-.ice-cream-bites span.active {
-  background: linear-gradient(90deg, #f5a9bd, var(--gold));
-}
-
-.ice-cream-progress-label {
+.statement-progress > span {
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.help-steps {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 22px;
 }
 
 .footer {

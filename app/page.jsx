@@ -1,6 +1,7 @@
 import Link from "next/link";
-import AIActCard from "@/components/AIActCard";
 import { getSurveys } from "@/lib/storage";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const surveys = await getSurveys();
@@ -11,22 +12,23 @@ export default async function Home() {
       <div className="shell">
         <header className="topbar">
           <div className="brand">
-            <strong>Paradogs</strong>
-            <span>Yes, but no</span>
+            <strong>DeepAsk</strong>
+            <span>Public data demo</span>
           </div>
           <nav className="nav" aria-label="Primary">
-            <Link href={`/s/${activeSurvey.id}`}>Participant survey</Link>
-            <Link href="/organizer">Organiser</Link>
+            <Link href={`/s/${activeSurvey.id}`}>Survey</Link>
+            <Link href={`/s/${activeSurvey.id}/mind-hive`}>Mind Hive</Link>
+            <Link href="/help">Help</Link>
           </nav>
         </header>
 
         <section className="hero">
-          <p className="eyebrow">EU Civic Tech Hackathon · Paradogs</p>
-          <h1>Yes, but no</h1>
+          <p className="eyebrow">A short public-data demonstration</p>
+          <h1>DeepAsk</h1>
           <p className="lede">
-            DeepAsk turns individual civic input into a collective group map without
-            exposing individual answers. Participants answer. Organisers design the
-            questions. Mind Hive shows what the group appears to be thinking.
+            Answer a public-data question in your own words. DeepAsk asks one
+            neutral follow-up, lets you approve the summary, and adds it to a
+            collective map without publishing your raw answer.
           </p>
           <div className="pill-list" style={{ marginTop: 22 }}>
             <span className="pill">Private answers</span>
@@ -45,19 +47,27 @@ export default async function Home() {
             </p>
             <span className="portal-action">Start participant flow</span>
           </Link>
-          <Link className="portal-card" href="/organizer">
-            <p className="eyebrow">For organisers</p>
-            <h2>Build the survey</h2>
+          <Link className="portal-card" href={`/s/${activeSurvey.id}/mind-hive`}>
+            <p className="eyebrow">Collective view</p>
+            <h2>Explore Mind Hive</h2>
             <p>
-              Create questions, set the follow-up limit, and inspect the civic
-              signals behind the group map.
+              See clearly labelled synthetic examples alongside any answers
+              submitted during this demo.
             </p>
-            <span className="portal-action">Open organiser workspace</span>
+            <span className="portal-action">View group patterns</span>
           </Link>
         </section>
 
-        <section style={{ marginTop: 18 }}>
-          <AIActCard compact />
+        <section className="card stack" style={{ marginTop: 18 }}>
+          <p className="eyebrow">Before you begin</p>
+          <h2>Need a quick explanation?</h2>
+          <p>
+            The Help page explains the four-step flow, what is stored, and which
+            Mind Hive answers are synthetic examples.
+          </p>
+          <div className="actions">
+            <Link className="button secondary" href="/help">Open Help</Link>
+          </div>
         </section>
       </div>
     </main>

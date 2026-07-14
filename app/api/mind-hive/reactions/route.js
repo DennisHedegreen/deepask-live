@@ -1,4 +1,6 @@
-import { REACTION_TYPES, buildMindHive } from "@/lib/mindHive";
+import { SURVEY_ID } from "@/lib/constants";
+import { REACTION_TYPES } from "@/lib/mindHive";
+import { buildMindHiveForSurvey } from "@/lib/mindHiveData";
 import {
   getMindHiveReactions,
   getResponsesForSurvey,
@@ -17,7 +19,7 @@ export async function POST(request) {
     if (limited) return limited;
 
     const body = await readLimitedJson(request, 10_000);
-    const surveyId = String(body.survey_id || "hackathon-comet-2026").trim();
+    const surveyId = String(body.survey_id || SURVEY_ID).trim();
     const statementId = truncateText(body.statement_id, 120);
     const reactionType = String(body.reaction_type || "").trim();
     const participantToken = String(body.participant_token || "").trim();
@@ -34,9 +36,11 @@ export async function POST(request) {
     const allReactions = await getMindHiveReactions();
     const reactions = reactionsForSurvey(allReactions, surveyId);
 
+    const mindHiveData = buildMindHiveForSurvey(surveyId, responses, reactions);
+
     return Response.json({
       reactions: reactions[statementId] || {},
-      hive: buildMindHive(responses, reactions)
+      ...mindHiveData
     });
   } catch (error) {
     return Response.json(

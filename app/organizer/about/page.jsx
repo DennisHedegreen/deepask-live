@@ -7,7 +7,7 @@ export default function OrganizerAboutPage() {
       <div className="shell">
         <header className="topbar">
           <div className="brand">
-            <strong>Paradogs</strong>
+            <strong>DeepAsk</strong>
             <span>Organiser explanation</span>
           </div>
           <nav className="nav" aria-label="Primary">
@@ -24,7 +24,7 @@ export default function OrganizerAboutPage() {
             personal answers as public content.
           </p>
           <div className="pill-list" style={{ marginTop: 22 }}>
-            <span className="pill">Yes, but no</span>
+            <span className="pill">Public data</span>
             <span className="pill">Civic input</span>
             <span className="pill">Collective intelligence</span>
           </div>

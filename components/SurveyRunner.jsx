@@ -198,7 +198,7 @@ function ConversationPreview({ questions }) {
   );
 }
 
-function InlineHiveStatement({ statement, localReactions, onReact }) {
+function InlineHiveStatement({ statement, localReactions, onReact, usingDemo }) {
   const statementLocal = localReactions[statement.id] || {};
 
   return (
@@ -206,8 +206,8 @@ function InlineHiveStatement({ statement, localReactions, onReact }) {
       <div className="response-head">
         <strong>{statement.title}</strong>
         <span>
-          mentioned in {statement.responseCount} submitted survey
-          {statement.responseCount === 1 ? "" : "s"}
+          mentioned in {statement.responseCount} {usingDemo ? "responses in this demo map" : "submitted survey"}
+          {!usingDemo && statement.responseCount !== 1 ? "s" : ""}
         </span>
       </div>
       <div className="pill-list">
@@ -257,6 +257,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
   const [isEditing, setIsEditing] = useState(false);
   const [savedWorkpack, setSavedWorkpack] = useState(null);
   const [hive, setHive] = useState(null);
+  const [hiveUsingDemo, setHiveUsingDemo] = useState(false);
   const [hiveIndex, setHiveIndex] = useState(0);
   const [localHiveReactions, setLocalHiveReactions] = useState({});
   const [autoFollowupAttempts, setAutoFollowupAttempts] = useState({});
@@ -462,6 +463,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
     setIsEditing(false);
     setSavedWorkpack(null);
     setHive(null);
+    setHiveUsingDemo(false);
     setHiveIndex(0);
     setLocalHiveReactions({});
     setAutoFollowupAttempts({});
@@ -478,6 +480,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || "Could not load group review");
     setHive(data.hive);
+    setHiveUsingDemo(Boolean(data.usingDemo));
     setHiveIndex(0);
     setLocalHiveReactions(loadLocalHiveReactions(surveyId));
     setPhase("groupReview");
@@ -514,6 +517,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
       saveLocalHiveReactions(surveyId, nextLocal);
       setLocalHiveReactions(nextLocal);
       setHive(data.hive);
+      setHiveUsingDemo(Boolean(data.usingDemo));
       setStatus("");
     } catch (requestError) {
       setError(requestError.message);
@@ -536,12 +540,12 @@ export default function SurveyRunner({ survey: surveyInput }) {
       <div className="shell">
         <header className="topbar">
           <div className="brand">
-            <strong>Paradogs</strong>
-            <span>DeepAsk Live</span>
+            <strong>DeepAsk</strong>
+            <span>Public data demo</span>
           </div>
           <nav className="nav" aria-label="Primary">
             <Link href={`/s/${surveyId}`}>Survey</Link>
-            <Link href={`/s/${surveyId}/about`}>About</Link>
+            <Link href="/help">Help</Link>
           </nav>
         </header>
 
@@ -818,6 +822,14 @@ export default function SurveyRunner({ survey: surveyInput }) {
                   </section>
                 ) : (
                   <>
+                    {hiveUsingDemo ? (
+                      <p className="warning">
+                        This map combines {hiveOverview.syntheticResponseCount || 0} fictional
+                        examples with {hiveOverview.submittedResponseCount || 0} answer
+                        {hiveOverview.submittedResponseCount === 1 ? "" : "s"} submitted during
+                        the demo.
+                      </p>
+                    ) : null}
                     <section className="card stack">
                       <p className="eyebrow">
                         Mind Hive · statement {Math.min(hiveIndex + 1, sortedHiveStatements.length)} of{" "}
@@ -832,11 +844,18 @@ export default function SurveyRunner({ survey: surveyInput }) {
                         />
                       </div>
                       <p className="note">
-                        These are interpreted group patterns from submitted survey
-                        answers. React to this one, then move to the next.
+                        These are interpreted patterns from responses in the demo
+                        map. React to this one, then move to the next.
                       </p>
                       <div className="pill-list">
-                        <span className="pill">{hiveResponses} responses</span>
+                        {hiveUsingDemo ? (
+                          <>
+                            <span className="pill">{hiveOverview.syntheticResponseCount || 0} synthetic</span>
+                            <span className="pill">{hiveOverview.submittedResponseCount || 0} submitted</span>
+                          </>
+                        ) : (
+                          <span className="pill">{hiveResponses} responses</span>
+                        )}
                         <span className="pill">{sortedHiveStatements.length} group patterns</span>
                         <span className="pill">No raw individual answers</span>
                       </div>
@@ -847,6 +866,7 @@ export default function SurveyRunner({ survey: surveyInput }) {
                         localReactions={localHiveReactions}
                         onReact={reactToHiveStatement}
                         statement={currentHiveStatement}
+                        usingDemo={hiveUsingDemo}
                       />
                     ) : null}
 
@@ -896,9 +916,9 @@ export default function SurveyRunner({ survey: surveyInput }) {
         </section>
 
         <footer className="footer">
-          DeepAsk Live is a hackathon prototype. AI-generated follow-up questions
-          and summaries are draft civic signals for human review, not final
-          institutional conclusions.
+          AI-generated follow-up questions and summaries are drafts for human
+          review, not final institutional conclusions. See Help for the demo&apos;s
+          data boundaries.
         </footer>
       </div>
     </main>

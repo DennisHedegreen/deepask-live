@@ -1,8 +1,11 @@
-# DeepAsk Live
+# DeepAsk public-data demo
 
-DeepAsk Live is a hackathon prototype for adaptive civic listening.
+This branch is a short public-data demonstration of DeepAsk's adaptive civic
+listening flow.
 
-It asks several civic questions, automatically asks at least one neutral AI follow-up per question, creates a structured summary across the full interview, lets the participant confirm or edit that summary, and stores an auditable response workpack.
+It asks one neutral follow-up, creates a participant-confirmed summary, and
+turns answers into a Mind Hive group map. Six fictional responses seed the map
+and remain labelled separately from answers submitted during the demo.
 
 ## Run locally
 
@@ -14,9 +17,9 @@ npm run dev
 Open:
 
 - Entry point: `http://localhost:3000`
-- Participant survey: `http://localhost:3000/s/hackathon-comet-2026`
-- Participant group results: `http://localhost:3000/s/hackathon-comet-2026/mind-hive`
-- Participant explanation: `http://localhost:3000/s/hackathon-comet-2026/about`
+- Participant survey: `http://localhost:3000/s/public-data-possibilities`
+- Participant group results: `http://localhost:3000/s/public-data-possibilities/mind-hive`
+- Participant Help: `http://localhost:3000/help`
 - Organiser workspace: `http://localhost:3000/organizer`
 - Organiser explanation: `http://localhost:3000/organizer/about`
 
@@ -54,6 +57,7 @@ For a live Node deployment:
 NEXT_PUBLIC_BASE_PATH=/deepask ORGANIZER_CODE=change-this-before-live npm run build:deepask
 NEXT_PUBLIC_BASE_PATH=/deepask ORGANIZER_CODE=change-this-before-live npm run start:deepask
 npm run smoke:deepask -- http://127.0.0.1:3100/deepask
+npm run smoke:demo-flow -- http://127.0.0.1:3100/deepask
 ```
 
 More deployment detail is in `deploy/README.md`.
@@ -100,6 +104,8 @@ The public Railway URL will use `/deepask`, for example:
 https://your-railway-domain.up.railway.app/deepask
 ```
 
+Use `/deepask/api/health` as the Railway health-check path.
+
 ## Project docs
 
 - `docs/ENGINE.md` explains the survey engine, data model, API routes, Mind Hive rules, and abuse controls.
@@ -113,11 +119,11 @@ The current prototype uses a `questions[]` workpack format. Each question stores
 
 The product is split into separate surfaces:
 
-- Participants use `/s/[surveyId]` and only see the survey, participant about page, and aggregated group result.
+- Participants use `/s/[surveyId]` and only see the survey, Help page, and aggregated group result.
 - Organisers use `/organizer` to create surveys, edit questions, set the follow-up limit, and review operational workpacks.
 - Mind Hive uses `/s/[surveyId]/mind-hive` so group results and reactions stay scoped to one survey.
 
-Survey definitions are stored locally in `data/surveys.json`. Response workpacks include `survey_id`, so one hackathon can run multiple separate surveys without mixing answers.
+Survey definitions are stored locally in `data/surveys.json`. Response workpacks include `survey_id`, so multiple surveys can run without mixing answers.
 
 ## Survey modes
 

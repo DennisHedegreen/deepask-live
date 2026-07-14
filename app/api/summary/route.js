@@ -64,8 +64,8 @@ export async function POST(request) {
 
 function normaliseSummary(summary) {
   return {
-    main_theme: truncateText(summary.main_theme || "Hackathon feedback", 180),
-    barrier_or_need: truncateText(summary.barrier_or_need || "Needs clearer support", 240),
+    main_theme: truncateText(summary.main_theme || "Public data and collective understanding", 180),
+    barrier_or_need: truncateText(summary.barrier_or_need || "Needs clearer public information", 240),
     suggested_improvement: truncateText(
       summary.suggested_improvement || "Clarify the most useful next improvement.",
       240

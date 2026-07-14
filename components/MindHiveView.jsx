@@ -47,54 +47,30 @@ function reactionTotal(reactions) {
   return Object.values(reactions || {}).reduce((total, count) => total + Number(count || 0), 0);
 }
 
-function IceCreamProgress({ currentIndex, total }) {
+function StatementProgress({ currentIndex, total }) {
   const safeTotal = Math.max(1, total);
-  const maxIndex = Math.max(0, safeTotal - 1);
-  const clampedIndex = Math.min(currentIndex, maxIndex);
+  const current = Math.min(currentIndex + 1, safeTotal);
+  const percentage = (current / safeTotal) * 100;
+
   return (
-    <div
-      className="ice-cream-progress"
-      aria-label={`Ice cream progress: ${clampedIndex + 1} of ${safeTotal}`}
-    >
-      <div className="ice-cream-stage">
-        <span
-          aria-hidden="true"
-          className="ice-cream-sprite"
-          style={{
-            backgroundImage: `url("${apiPath("/assets/ice-cream-progress.png")}")`,
-            "--ice-frame": clampedIndex,
-            "--ice-position": `${maxIndex ? (clampedIndex / maxIndex) * 100 : 0}%`
-          }}
-        />
-        <div className="ice-cream-bites" aria-hidden="true">
-          {Array.from({ length: safeTotal }, (_, index) => (
-            <span
-              className={index <= clampedIndex ? "active" : ""}
-              key={index}
-            />
-          ))}
-        </div>
+    <div className="statement-progress" aria-label={`Statement ${current} of ${safeTotal}`}>
+      <div className="progress-track" aria-hidden="true">
+        <span style={{ width: `${percentage}%` }} />
       </div>
-      <span className="ice-cream-progress-label">
-        Bite {clampedIndex + 1} of {safeTotal}
-      </span>
+      <span>{current} of {safeTotal} reviewed</span>
     </div>
   );
 }
 
-function StatementProgress({ currentIndex, total }) {
-  return <IceCreamProgress currentIndex={currentIndex} total={total} />;
-}
-
-function StatementCard({ statement, localReactions, onReact, canReact }) {
+function StatementCard({ statement, localReactions, onReact, canReact, usingDemo }) {
   const statementLocal = localReactions[statement.id] || {};
   return (
     <article className="response-card stack">
       <div className="response-head">
         <strong>{statement.title}</strong>
         <span>
-          mentioned in {statement.responseCount} submitted survey
-          {statement.responseCount === 1 ? "" : "s"}
+          mentioned in {statement.responseCount} {usingDemo ? "responses in this demo map" : "submitted survey"}
+          {!usingDemo && statement.responseCount !== 1 ? "s" : ""}
         </span>
       </div>
       <div className="pill-list">
@@ -250,31 +226,34 @@ export default function MindHiveView({ survey }) {
       <div className="shell">
         <header className="topbar">
           <div className="brand">
-            <strong>DeepAsk Live</strong>
+            <strong>DeepAsk</strong>
             <span>Participant group results</span>
           </div>
           <nav className="nav" aria-label="Primary">
             <Link href={`/s/${surveyId}`}>Survey</Link>
-            <Link href={`/s/${surveyId}/about`}>About</Link>
+            <Link href="/help">Help</Link>
           </nav>
         </header>
 
         <section className="hero">
-          <p className="eyebrow">Collective civic intelligence</p>
-          <h1>{survey.title} Mind Hive</h1>
+          <p className="eyebrow">{survey.title}</p>
+          <h1>Mind Hive</h1>
           <p className="lede">
-            Mind Hive transforms individual survey answers into shared civic
-            patterns. It does not show who said what. It shows what the group
-            appears to be thinking, where people agree, where they disagree, and
-            what questions should be asked next. Survey participants can react to
-            collective statements after submitting their own response.
+            Mind Hive turns individual answers into shared patterns without showing
+            who said what. It highlights agreements, tensions, missing perspectives,
+            and questions that may deserve another round of inquiry.
           </p>
         </section>
 
         {error ? <p className="warning">{error}</p> : null}
         {status ? <p className="note">{status}</p> : null}
         {usingDemo ? (
-          <p className="note">No stored responses yet. Showing demo group patterns.</p>
+          <p className="warning">
+            Demo dataset: {overview.syntheticResponseCount || 0} fictional examples
+            {overview.submittedResponseCount
+              ? ` plus ${overview.submittedResponseCount} answer${overview.submittedResponseCount === 1 ? "" : "s"} submitted during this demo`
+              : " and no submitted demo answers yet"}.
+          </p>
         ) : null}
         {!canReact ? (
           <p className="warning">
@@ -286,8 +265,13 @@ export default function MindHiveView({ survey }) {
 
         <section className="dashboard-grid">
           <div className="card metric">
-            <p className="eyebrow">Survey responses</p>
+            <p className="eyebrow">Responses in map</p>
             <strong>{overview.totalSurveyResponses || 0}</strong>
+            {usingDemo ? (
+              <span className="note">
+                {overview.syntheticResponseCount || 0} synthetic · {overview.submittedResponseCount || 0} submitted
+              </span>
+            ) : null}
           </div>
           <div className="card metric">
             <p className="eyebrow">Collective statements</p>
@@ -356,6 +340,7 @@ export default function MindHiveView({ survey }) {
                 localReactions={localReactions}
                 onReact={handleReact}
                 statement={currentStatement}
+                usingDemo={usingDemo}
               />
             ) : null}
 
@@ -395,8 +380,9 @@ export default function MindHiveView({ survey }) {
         )}
 
         <footer className="footer">
-          Mind Hive is a hackathon prototype. It shows interpreted group patterns
-          for human review, not final institutional conclusions.
+          Mind Hive shows interpreted group patterns for human review, not final
+          institutional conclusions. Synthetic examples are labelled separately
+          from answers submitted during this demo.
         </footer>
       </div>
     </main>

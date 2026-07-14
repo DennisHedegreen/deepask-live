@@ -444,7 +444,7 @@ export default function OrganizerPage() {
     const next = {
       id: "",
       title: "New civic survey",
-      subtitle: "EU Civic Tech Survey",
+      subtitle: "DeepAsk public-data survey",
       intro:
         "Answer one question at a time. Your answers help form a shared group map without showing who said what.",
       mode: "simple",
@@ -542,7 +542,7 @@ export default function OrganizerPage() {
       <div className="shell">
         <header className="topbar">
           <div className="brand">
-            <strong>Paradogs</strong>
+            <strong>DeepAsk</strong>
             <span>Organiser workspace</span>
           </div>
           <nav className="nav" aria-label="Primary">
@@ -560,7 +560,7 @@ export default function OrganizerPage() {
         </header>
 
         <section className="hero">
-          <p className="eyebrow">Paradogs · survey builder</p>
+          <p className="eyebrow">Private survey builder</p>
           <h1>Organiser workspace</h1>
           <p className="lede">
             Build the civic question flow, keep participant answers separate, and
@@ -947,8 +947,8 @@ export default function OrganizerPage() {
             <aside className="card stack">
               <h2>Demo line</h2>
               <p className="note">
-                Paradogs: Yes, but no. DeepAsk turns one-at-a-time civic answers into a
-                collective group map people can react to after submitting.
+                DeepAsk turns one-at-a-time civic answers into a collective group
+                map people can review after submitting.
               </p>
             </aside>
           </section>

@@ -8,7 +8,7 @@ const checks = [
   },
   {
     name: "participant survey",
-    url: `${target}/s/hackathon-comet-2026`,
+    url: `${target}/s/public-data-possibilities`,
     validate: async (response) => response.ok
   },
   {
@@ -24,16 +24,24 @@ const checks = [
   },
   {
     name: "mind hive",
-    url: `${target}/api/mind-hive?survey_id=hackathon-comet-2026`,
+    url: `${target}/api/mind-hive?survey_id=public-data-possibilities`,
     validate: async (response) => {
       if (!response.ok) return false;
       const data = await response.json();
-      return Boolean(data.hive?.overview) && Array.isArray(data.hive?.statements);
+      return Boolean(data.hive?.overview) &&
+        Array.isArray(data.hive?.statements) &&
+        data.usingDemo === true &&
+        data.hive.overview.syntheticResponseCount === 6;
     }
   },
   {
+    name: "help page",
+    url: `${target}/help`,
+    validate: async (response) => response.ok
+  },
+  {
     name: "raw responses locked",
-    url: `${target}/api/responses?survey_id=hackathon-comet-2026`,
+    url: `${target}/api/responses?survey_id=public-data-possibilities`,
     validate: async (response) => response.status === 401
   }
 ];

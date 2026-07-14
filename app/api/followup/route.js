@@ -46,10 +46,10 @@ export async function POST(request) {
     });
 
     return Response.json({
-      theme: String(followup.theme || "Hackathon feedback"),
+      theme: String(followup.theme || "Public data and collective understanding"),
       follow_up_question: String(
         followup.follow_up_question ||
-          "What specific example or change would help clarify this for organisers?"
+          "What specific example, data point, or decision would make this clearer?"
       ),
       should_continue: Boolean(followup.should_continue ?? true),
       model_provider: String(followup.model_provider || "unknown"),

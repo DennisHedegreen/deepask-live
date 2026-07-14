@@ -1,4 +1,5 @@
-import { buildMindHive } from "@/lib/mindHive";
+import { SURVEY_ID } from "@/lib/constants";
+import { buildMindHiveForSurvey } from "@/lib/mindHiveData";
 import {
   getMindHiveReactions,
   getResponsesForSurvey,
@@ -8,13 +9,10 @@ import {
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const surveyId = searchParams.get("survey_id") || "hackathon-comet-2026";
+  const surveyId = searchParams.get("survey_id") || SURVEY_ID;
   const responses = (await getResponsesForSurvey(surveyId)).filter(responseHasRequiredFollowups);
   const allReactions = await getMindHiveReactions();
   const reactions = reactionsForSurvey(allReactions, surveyId);
 
-  return Response.json({
-    hive: buildMindHive(responses, reactions),
-    usingDemo: false
-  });
+  return Response.json(buildMindHiveForSurvey(surveyId, responses, reactions));
 }
